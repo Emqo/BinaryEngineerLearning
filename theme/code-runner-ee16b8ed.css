@@ -257,8 +257,7 @@
 .code-block-editable .editable-code:focus {
     outline: none;
     border-color: var(--code-runner-border);
-    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2), 0 2px 8px rgba(0, 0, 0, 0.15);
-    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* 代码编辑器模态框 */
