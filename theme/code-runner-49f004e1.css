@@ -248,7 +248,6 @@
     word-wrap: break-word;
     tab-size: 4;
     box-sizing: border-box;
-    transition: all 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     /* 确保高度自动调整 */
     height: auto;
@@ -257,7 +256,7 @@
 
 .code-block-editable .editable-code:focus {
     outline: none;
-    border-color: #4CAF50;
+    border-color: var(--code-runner-border);
     box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2), 0 2px 8px rgba(0, 0, 0, 0.15);
     transform: translateY(-1px);
 }
