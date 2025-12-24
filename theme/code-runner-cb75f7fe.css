@@ -1,0 +1,242 @@
+/**
+ * 代码运行器样式
+ */
+
+/* 按钮容器 */
+.code-runner-buttons {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* 运行按钮 */
+.run-code-btn,
+.edit-code-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.run-code-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.run-code-btn:hover:not(:disabled) {
+    background-color: #45a049;
+}
+
+.run-code-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.edit-code-btn {
+    background-color: #2196F3;
+    color: white;
+}
+
+.edit-code-btn:hover {
+    background-color: #0b7dda;
+}
+
+/* 结果显示容器 */
+.code-result-container {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    display: none;
+}
+
+.code-result {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.result-success {
+    color: #4CAF50;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.result-error {
+    color: #f44336;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.result-output,
+.result-error-output {
+    margin-top: 10px;
+}
+
+.result-output strong,
+.result-error-output strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.result-output pre,
+.result-error-output pre {
+    margin: 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-x: auto;
+}
+
+.result-error-output pre {
+    background-color: #ffebee;
+    border-color: #f44336;
+}
+
+.result-no-output {
+    color: #999;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+/* 代码编辑器模态框 */
+.code-editor-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.code-editor-container {
+    background-color: white;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 900px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.code-editor-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.code-editor-wrapper {
+    flex: 1;
+    overflow: auto;
+    padding: 20px;
+}
+
+.code-editor-textarea {
+    width: 100%;
+    min-height: 400px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.code-editor-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.close-editor-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.close-editor-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.run-editor-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.run-editor-btn:hover:not(:disabled) {
+    background-color: #45a049;
+}
+
+.run-editor-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.code-editor-result {
+    padding: 0 20px 20px 20px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .code-editor-modal {
+        padding: 10px;
+    }
+    
+    .code-editor-container {
+        max-height: 95vh;
+    }
+    
+    .code-editor-textarea {
+        min-height: 300px;
+    }
+    
+    .code-runner-buttons {
+        flex-direction: column;
+    }
+    
+    .run-code-btn,
+    .edit-code-btn {
+        width: 100%;
+    }
+}
+

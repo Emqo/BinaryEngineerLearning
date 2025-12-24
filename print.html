@@ -1,0 +1,1611 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Binary Engineer Learning</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="AI驱动的二进制工程师和系统编程完整学习路径">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/code-runner-cb75f7fe.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "navy";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-18b9fb11.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">Binary Engineer Learning</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/Emqo/BinaryEngineerLearning" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="binary-engineer-learning"><a class="header" href="#binary-engineer-learning">Binary Engineer Learning</a></h1>
+<blockquote>
+<p>🤖 AI驱动的二进制工程师和系统编程完整学习路径</p>
+</blockquote>
+<p>欢迎！这是一个交互式学习平台，你可以<strong>边看边练习</strong>，直接在浏览器中运行代码！</p>
+<h2 id="-特性"><a class="header" href="#-特性">✨ 特性</a></h2>
+<ul>
+<li>📚 <strong>交互式学习</strong>：每个章节都有可运行的代码示例</li>
+<li>💻 <strong>在线练习</strong>：直接在浏览器中编辑和运行代码</li>
+<li>✅ <strong>即时反馈</strong>：运行代码立即看到结果</li>
+<li>🎯 <strong>循序渐进</strong>：从基础到进阶，系统学习</li>
+<li>🤖 <strong>AI教学</strong>：完全由AI生成和维护的学习材料</li>
+</ul>
+<h2 id="-快速开始"><a class="header" href="#-快速开始">🚀 快速开始</a></h2>
+<h3 id="-在线学习推荐"><a class="header" href="#-在线学习推荐">🌐 在线学习（推荐）</a></h3>
+<p>访问我们的在线版本：<strong>https://emqo.github.io/BinaryEngineerLearning/</strong></p>
+<h3 id="-本地学习"><a class="header" href="#-本地学习">📚 本地学习</a></h3>
+<pre><code class="language-bash"># 安装 mdbook
+cargo install mdbook
+
+# 启动本地服务器
+mdbook serve
+
+# 浏览器打开 http://localhost:3000
+</code></pre>
+<h2 id="-学习路径"><a class="header" href="#-学习路径">📖 学习路径</a></h2>
+<ol>
+<li><strong>C语言基础</strong> - 掌握底层编程基础</li>
+<li><strong>Python基础</strong> - 快速开发和脚本编写</li>
+<li><strong>数据结构与算法</strong> - 建立算法思维</li>
+<li><strong>C++进阶</strong> - 面向对象和系统编程</li>
+<li><strong>汇编语言</strong> - 理解底层执行机制</li>
+<li><strong>逆向工程</strong> - 二进制分析和安全技术</li>
+</ol>
+<h2 id="-使用说明"><a class="header" href="#-使用说明">💡 使用说明</a></h2>
+<ul>
+<li>每个章节包含<strong>理论讲解</strong>和<strong>练习题</strong></li>
+<li>代码块可以直接编辑和运行（点击在线运行链接）</li>
+<li>完成练习后可以查看参考答案</li>
+<li>遇到问题随时提问AI</li>
+</ul>
+<h2 id="-ai教学系统"><a class="header" href="#-ai教学系统">🤖 AI教学系统</a></h2>
+<p>这个学习平台完全由AI生成和维护：</p>
+<ul>
+<li>📚 每个概念都有详细讲解，像电子书一样系统</li>
+<li>💻 每个知识点都有完整可运行的代码</li>
+<li>📝 每章都有配套练习题，巩固知识</li>
+<li>✅ AI会检查你的代码和理解程度</li>
+<li>🔄 遇到问题随时提问，获得即时解答</li>
+</ul>
+<h2 id="-更多信息"><a class="header" href="#-更多信息">📚 更多信息</a></h2>
+<p>查看 <a href="../README.html">项目README</a> 获取：</p>
+<ul>
+<li>完整的学习计划（48周详细规划）</li>
+<li>学习资源推荐（工具、平台、社区）</li>
+<li>设置和部署指南</li>
+<li>故障排除</li>
+</ul>
+<p><strong>开始你的学习之旅吧！</strong> 🎉</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="第1章c语言入门基础"><a class="header" href="#第1章c语言入门基础">第1章：C语言入门基础</a></h1>
+<h2 id="11-什么是c语言"><a class="header" href="#11-什么是c语言">1.1 什么是C语言</a></h2>
+<p>C语言是一种通用的、过程式的编程语言，由Dennis Ritchie在1972年开发。它是二进制工程师和系统程序员的基础语言，因为：</p>
+<ul>
+<li><strong>接近底层</strong>：C语言提供了直接访问内存的能力</li>
+<li><strong>高效性能</strong>：编译后的代码执行效率高</li>
+<li><strong>广泛应用</strong>：操作系统、编译器、嵌入式系统都用C编写</li>
+<li><strong>理解基础</strong>：学习C语言有助于理解计算机底层原理</li>
+</ul>
+<h2 id="12-第一个c程序"><a class="header" href="#12-第一个c程序">1.2 第一个C程序</a></h2>
+<p>让我们从经典的“Hello, World!“程序开始：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}
+</code></pre>
+<!-- 在线运行：点击下面的链接在浏览器中运行代码 -->
+<p><a href="https://playcode.io/c/?code=#include%20%3Cstdio.h%3E%0A%0Aint%20main()%20%7B%0A%20%20%20%20printf(%22Hello%2C%20World!%5Cn%22)%3B%0A%20%20%20%20return%200%3B%0A%7D">在线运行此代码</a></p>
+<h3 id="程序解析"><a class="header" href="#程序解析">程序解析</a></h3>
+<ol>
+<li>
+<p><strong><code>#include &lt;stdio.h&gt;</code></strong></p>
+<ul>
+<li>预处理指令，包含标准输入输出库</li>
+<li><code>stdio.h</code> 提供了 <code>printf</code> 等函数</li>
+</ul>
+</li>
+<li>
+<p><strong><code>int main()</code></strong></p>
+<ul>
+<li>程序入口点，每个C程序必须有一个main函数</li>
+<li><code>int</code> 表示返回整数类型</li>
+<li><code>()</code> 表示无参数</li>
+</ul>
+</li>
+<li>
+<p><strong><code>printf("Hello, World!\n");</code></strong></p>
+<ul>
+<li>输出字符串到控制台</li>
+<li><code>\n</code> 是换行符</li>
+</ul>
+</li>
+<li>
+<p><strong><code>return 0;</code></strong></p>
+<ul>
+<li>返回0表示程序正常结束</li>
+<li>非0值表示程序异常</li>
+</ul>
+</li>
+</ol>
+<h3 id="编译和运行"><a class="header" href="#编译和运行">编译和运行</a></h3>
+<pre><code class="language-bash"># 编译
+gcc hello.c -o hello
+
+# 运行
+./hello        # Linux/macOS
+hello.exe      # Windows
+</code></pre>
+<h2 id="13-数据类型"><a class="header" href="#13-数据类型">1.3 数据类型</a></h2>
+<p>C语言提供了多种基本数据类型，理解这些类型对二进制工程师至关重要：</p>
+<h3 id="整数类型"><a class="header" href="#整数类型">整数类型</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>类型</th><th>大小（字节）</th><th>范围</th></tr>
+</thead>
+<tbody>
+<tr><td><code>char</code></td><td>1</td><td>-128 到 127</td></tr>
+<tr><td><code>short</code></td><td>2</td><td>-32,768 到 32,767</td></tr>
+<tr><td><code>int</code></td><td>4</td><td>-2,147,483,648 到 2,147,483,647</td></tr>
+<tr><td><code>long</code></td><td>4或8</td><td>取决于系统</td></tr>
+<tr><td><code>long long</code></td><td>8</td><td>更大的范围</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="浮点类型"><a class="header" href="#浮点类型">浮点类型</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>类型</th><th>大小（字节）</th><th>精度</th></tr>
+</thead>
+<tbody>
+<tr><td><code>float</code></td><td>4</td><td>单精度</td></tr>
+<tr><td><code>double</code></td><td>8</td><td>双精度</td></tr>
+<tr><td><code>long double</code></td><td>10或16</td><td>扩展精度</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="示例代码"><a class="header" href="#示例代码">示例代码</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;limits.h&gt;
+
+int main() {
+    // 整数类型
+    int age = 25;
+    short year = 2024;
+    long population = 8000000000L;
+    
+    // 浮点类型
+    float pi = 3.14159f;
+    double e = 2.71828;
+    
+    // 字符类型
+    char grade = 'A';
+    
+    // 打印类型大小
+    printf("int大小: %zu 字节\n", sizeof(int));
+    printf("float大小: %zu 字节\n", sizeof(float));
+    printf("double大小: %zu 字节\n", sizeof(double));
+    
+    // 打印取值范围
+    printf("int最大值: %d\n", INT_MAX);
+    printf("int最小值: %d\n", INT_MIN);
+    
+    return 0;
+}
+</code></pre>
+<p><strong>重要提示</strong>：<code>sizeof</code> 运算符返回类型或变量占用的字节数，这对理解内存布局非常重要！</p>
+<h2 id="14-变量和常量"><a class="header" href="#14-变量和常量">1.4 变量和常量</a></h2>
+<h3 id="变量声明和初始化"><a class="header" href="#变量声明和初始化">变量声明和初始化</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    // 声明变量
+    int count;
+    float price;
+    char symbol;
+    
+    // 初始化变量
+    count = 10;
+    price = 99.99f;
+    symbol = '$';
+    
+    // 声明并初始化
+    int total = 100;
+    double rate = 0.05;
+    
+    printf("count = %d\n", count);
+    printf("price = %.2f\n", price);
+    printf("symbol = %c\n", symbol);
+    
+    return 0;
+}
+</code></pre>
+<h3 id="常量"><a class="header" href="#常量">常量</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+#define MAX_SIZE 100        // 宏定义常量
+#define PI 3.14159
+
+int main() {
+    const int MIN_AGE = 18;  // const关键字定义常量
+    
+    printf("最大大小: %d\n", MAX_SIZE);
+    printf("圆周率: %.5f\n", PI);
+    printf("最小年龄: %d\n", MIN_AGE);
+    
+    // MIN_AGE = 20;  // 错误！常量不能修改
+    
+    return 0;
+}
+</code></pre>
+<h2 id="15-运算符"><a class="header" href="#15-运算符">1.5 运算符</a></h2>
+<h3 id="算术运算符"><a class="header" href="#算术运算符">算术运算符</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 10, b = 3;
+    
+    printf("a = %d, b = %d\n", a, b);
+    printf("a + b = %d\n", a + b);   // 加法
+    printf("a - b = %d\n", a - b);   // 减法
+    printf("a * b = %d\n", a * b);   // 乘法
+    printf("a / b = %d\n", a / b);   // 整数除法
+    printf("a %% b = %d\n", a % b);  // 取余（注意%%转义）
+    
+    // 浮点除法
+    float x = 10.0f, y = 3.0f;
+    printf("x / y = %.2f\n", x / y);
+    
+    return 0;
+}
+</code></pre>
+<h3 id="关系运算符"><a class="header" href="#关系运算符">关系运算符</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 10, b = 20;
+    
+    printf("%d == %d: %d\n", a, b, a == b);  // 等于
+    printf("%d != %d: %d\n", a, b, a != b);  // 不等于
+    printf("%d &lt; %d: %d\n", a, b, a &lt; b);    // 小于
+    printf("%d &gt; %d: %d\n", a, b, a &gt; b);    // 大于
+    printf("%d &lt;= %d: %d\n", a, b, a &lt;= b);  // 小于等于
+    printf("%d &gt;= %d: %d\n", a, b, a &gt;= b);  // 大于等于
+    
+    return 0;
+}
+</code></pre>
+<h3 id="逻辑运算符"><a class="header" href="#逻辑运算符">逻辑运算符</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdbool.h&gt;
+
+int main() {
+    bool x = true, y = false;
+    
+    printf("x &amp;&amp; y: %d\n", x &amp;&amp; y);  // 逻辑与
+    printf("x || y: %d\n", x || y);  // 逻辑或
+    printf("!x: %d\n", !x);          // 逻辑非
+    
+    return 0;
+}
+</code></pre>
+<h3 id="位运算符重要"><a class="header" href="#位运算符重要">位运算符（重要！）</a></h3>
+<p>位运算符对二进制工程师非常重要：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    unsigned int a = 0b10101100;  // 二进制：10101100
+    unsigned int b = 0b11110000;  // 二进制：11110000
+    
+    printf("a = 0x%x (%d)\n", a, a);
+    printf("b = 0x%x (%d)\n", b, b);
+    
+    printf("a &amp; b = 0x%x\n", a &amp; b);  // 按位与
+    printf("a | b = 0x%x\n", a | b);  // 按位或
+    printf("a ^ b = 0x%x\n", a ^ b);  // 按位异或
+    printf("~a = 0x%x\n", ~a);        // 按位取反
+    printf("a &lt;&lt; 2 = 0x%x\n", a &lt;&lt; 2); // 左移
+    printf("a &gt;&gt; 2 = 0x%x\n", a &gt;&gt; 2); // 右移
+    
+    return 0;
+}
+</code></pre>
+<p><strong>位运算应用</strong>：</p>
+<ul>
+<li>设置标志位：<code>flags |= FLAG_BIT</code></li>
+<li>清除标志位：<code>flags &amp;= ~FLAG_BIT</code></li>
+<li>检查标志位：<code>if (flags &amp; FLAG_BIT)</code></li>
+<li>切换标志位：<code>flags ^= FLAG_BIT</code></li>
+</ul>
+<h2 id="16-输入输出"><a class="header" href="#16-输入输出">1.6 输入输出</a></h2>
+<h3 id="printf格式化输出"><a class="header" href="#printf格式化输出">printf格式化输出</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int num = 42;
+    float f = 3.14159f;
+    char ch = 'A';
+    char str[] = "Hello";
+    
+    // 整数
+    printf("十进制: %d\n", num);
+    printf("八进制: %o\n", num);
+    printf("十六进制: %x (小写)\n", num);
+    printf("十六进制: %X (大写)\n", num);
+    
+    // 浮点数
+    printf("浮点数: %f\n", f);
+    printf("科学计数: %e\n", f);
+    printf("保留2位小数: %.2f\n", f);
+    
+    // 字符和字符串
+    printf("字符: %c\n", ch);
+    printf("字符串: %s\n", str);
+    
+    // 宽度和对齐
+    printf("右对齐: %10d\n", num);
+    printf("左对齐: %-10d\n", num);
+    printf("前导零: %05d\n", num);
+    
+    return 0;
+}
+</code></pre>
+<h3 id="scanf输入"><a class="header" href="#scanf输入">scanf输入</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int age;
+    float height;
+    char name[50];
+    
+    printf("请输入年龄: ");
+    scanf("%d", &amp;age);  // 注意&amp;符号！
+    
+    printf("请输入身高: ");
+    scanf("%f", &amp;height);
+    
+    printf("请输入姓名: ");
+    scanf("%s", name);  // 字符串不需要&amp;
+    
+    printf("\n你的信息:\n");
+    printf("姓名: %s\n", name);
+    printf("年龄: %d\n", age);
+    printf("身高: %.2f\n", height);
+    
+    return 0;
+}
+</code></pre>
+<p><strong>重要</strong>：<code>scanf</code> 使用 <code>&amp;</code> 获取变量地址，这是指针的基础！</p>
+<h2 id="17-内存地址初探"><a class="header" href="#17-内存地址初探">1.7 内存地址初探</a></h2>
+<p>理解内存地址是二进制工程师的核心技能：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 10;
+    int b = 20;
+    
+    printf("变量a的值: %d\n", a);
+    printf("变量a的地址: %p\n", (void*)&amp;a);
+    printf("变量b的值: %d\n", b);
+    printf("变量b的地址: %p\n", (void*)&amp;b);
+    
+    printf("\n变量大小: %zu 字节\n", sizeof(a));
+    printf("地址差: %ld 字节\n", (long)((char*)&amp;b - (char*)&amp;a));
+    
+    return 0;
+}
+</code></pre>
+<p><strong>观察</strong>：</p>
+<ul>
+<li>每个变量都有唯一的内存地址</li>
+<li>地址通常用十六进制表示</li>
+<li>相邻变量的地址可能连续（取决于编译器）</li>
+</ul>
+<h2 id="本节要点"><a class="header" href="#本节要点">本节要点</a></h2>
+<ol>
+<li>✅ C语言是系统编程的基础语言</li>
+<li>✅ 理解基本数据类型及其大小</li>
+<li>✅ 掌握变量声明、初始化和常量定义</li>
+<li>✅ 熟悉各种运算符，特别是位运算符</li>
+<li>✅ 掌握printf和scanf的基本用法</li>
+<li>✅ <strong>重要</strong>：理解变量有内存地址的概念</li>
+</ol>
+<h2 id="下一节预告"><a class="header" href="#下一节预告">下一节预告</a></h2>
+<p>下一章我们将学习控制结构（if/else、循环），这是程序流程控制的基础。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="第1章练习题"><a class="header" href="#第1章练习题">第1章练习题</a></h1>
+<h2 id="说明"><a class="header" href="#说明">说明</a></h2>
+<ul>
+<li>每题都有难度标记：[简单] [中等] [困难]</li>
+<li>建议先独立完成，再查看参考答案</li>
+<li>所有代码都要能编译运行</li>
+</ul>
+<hr>
+<h2 id="题目1基本输出-简单"><a class="header" href="#题目1基本输出-简单">题目1：基本输出 [简单]</a></h2>
+<p>编写一个程序，输出以下信息：</p>
+<pre><code>姓名：你的名字
+年龄：你的年龄
+专业：二进制工程
+</code></pre>
+<p><strong>要求</strong>：使用printf函数，格式美观。</p>
+<hr>
+<h2 id="题目2数据类型和大小-简单"><a class="header" href="#题目2数据类型和大小-简单">题目2：数据类型和大小 [简单]</a></h2>
+<p>编写程序，打印以下数据类型的大小（字节数）：</p>
+<ul>
+<li>char</li>
+<li>short</li>
+<li>int</li>
+<li>long</li>
+<li>float</li>
+<li>double</li>
+</ul>
+<p><strong>要求</strong>：使用sizeof运算符。</p>
+<hr>
+<h2 id="题目3变量计算-简单"><a class="header" href="#题目3变量计算-简单">题目3：变量计算 [简单]</a></h2>
+<p>编写程序：</p>
+<ol>
+<li>声明三个整数变量：a = 15, b = 7, c = 3</li>
+<li>计算并输出：
+<ul>
+<li>a + b - c</li>
+<li>a * b / c</li>
+<li>a % b</li>
+<li>(a + b) * c</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="题目4位运算练习-中等"><a class="header" href="#题目4位运算练习-中等">题目4：位运算练习 [中等]</a></h2>
+<p>编写程序，完成以下位运算：</p>
+<ol>
+<li>定义两个无符号整数：a = 0b11001100, b = 0b11110000</li>
+<li>计算并输出（十六进制格式）：
+<ul>
+<li>a &amp; b（按位与）</li>
+<li>a | b（按位或）</li>
+<li>a ^ b（按位异或）</li>
+<li>~a（按位取反）</li>
+<li>a &lt;&lt; 2（左移2位）</li>
+<li>a &gt;&gt; 2（右移2位）</li>
+</ul>
+</li>
+</ol>
+<p><strong>提示</strong>：使用 <code>printf("0x%x\n", value)</code> 输出十六进制。</p>
+<hr>
+<h2 id="题目5输入输出-简单"><a class="header" href="#题目5输入输出-简单">题目5：输入输出 [简单]</a></h2>
+<p>编写一个程序：</p>
+<ol>
+<li>提示用户输入两个整数</li>
+<li>读取这两个整数</li>
+<li>计算它们的和、差、积、商（整数除法）</li>
+<li>格式化输出结果</li>
+</ol>
+<p><strong>示例输出</strong>：</p>
+<pre><code>请输入第一个整数: 20
+请输入第二个整数: 5
+20 + 5 = 25
+20 - 5 = 15
+20 * 5 = 100
+20 / 5 = 4
+</code></pre>
+<hr>
+<h2 id="题目6内存地址观察-中等"><a class="header" href="#题目6内存地址观察-中等">题目6：内存地址观察 [中等]</a></h2>
+<p>编写程序：</p>
+<ol>
+<li>声明5个不同类型的变量（int, float, char, double, short）</li>
+<li>打印每个变量的：
+<ul>
+<li>变量名</li>
+<li>值</li>
+<li>内存地址（十六进制）</li>
+<li>大小（字节）</li>
+</ul>
+</li>
+<li>观察地址的规律</li>
+</ol>
+<p><strong>提示</strong>：使用 <code>%p</code> 打印地址，<code>sizeof</code> 获取大小。</p>
+<hr>
+<h2 id="题目7常量定义-简单"><a class="header" href="#题目7常量定义-简单">题目7：常量定义 [简单]</a></h2>
+<p>使用两种方式定义常量：</p>
+<ol>
+<li>使用 <code>#define</code> 定义：MAX_STUDENTS = 100, PI = 3.14159</li>
+<li>使用 <code>const</code> 定义：MIN_AGE = 18, GRAVITY = 9.8</li>
+<li>在程序中输出这些常量</li>
+</ol>
+<hr>
+<h2 id="题目8格式化输出-中等"><a class="header" href="#题目8格式化输出-中等">题目8：格式化输出 [中等]</a></h2>
+<p>编写程序，使用printf实现以下格式化输出：</p>
+<pre><code>数字: 42
+右对齐(10位):         42
+左对齐(10位): 42        
+前导零(5位): 00042
+浮点数: 3.14159
+保留2位: 3.14
+科学计数: 3.141590e+00
+十六进制: 0x2a
+</code></pre>
+<hr>
+<h2 id="题目9位标志操作-困难"><a class="header" href="#题目9位标志操作-困难">题目9：位标志操作 [困难]</a></h2>
+<p>实现一个简单的标志系统：</p>
+<ol>
+<li>定义三个标志位：
+<ul>
+<li>FLAG_READ = 0x01 (二进制: 00000001)</li>
+<li>FLAG_WRITE = 0x02 (二进制: 00000010)</li>
+<li>FLAG_EXECUTE = 0x04 (二进制: 00000100)</li>
+</ul>
+</li>
+<li>创建一个变量flags，初始为0</li>
+<li>实现以下操作：
+<ul>
+<li>设置READ标志</li>
+<li>设置WRITE标志</li>
+<li>检查是否有READ权限</li>
+<li>清除WRITE标志</li>
+<li>切换EXECUTE标志</li>
+</ul>
+</li>
+<li>每次操作后打印flags的值（二进制和十六进制）</li>
+</ol>
+<p><strong>提示</strong>：使用位运算符 <code>|</code>, <code>&amp;</code>, <code>^</code>, <code>~</code></p>
+<hr>
+<h2 id="题目10综合练习-困难"><a class="header" href="#题目10综合练习-困难">题目10：综合练习 [困难]</a></h2>
+<p>编写一个“学生信息管理系统“的简单版本：</p>
+<ol>
+<li>使用常量定义：MAX_NAME_LEN = 50</li>
+<li>提示用户输入：
+<ul>
+<li>学生姓名（字符串）</li>
+<li>年龄（整数）</li>
+<li>成绩（浮点数）</li>
+</ul>
+</li>
+<li>格式化输出学生信息，包括：
+<ul>
+<li>姓名（左对齐，20字符宽度）</li>
+<li>年龄（右对齐，5字符宽度）</li>
+<li>成绩（保留2位小数）</li>
+</ul>
+</li>
+<li>计算并输出：
+<ul>
+<li>成绩的十六进制表示（将浮点数转换为整数后）</li>
+<li>年龄的二进制表示（自己实现转换）</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="参考答案"><a class="header" href="#参考答案">参考答案</a></h2>
+<details>
+<summary>点击展开参考答案</summary>
+<h3 id="题目1参考答案"><a class="header" href="#题目1参考答案">题目1参考答案</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    printf("姓名：张三\n");
+    printf("年龄：20\n");
+    printf("专业：二进制工程\n");
+    return 0;
+}
+</code></pre>
+<h3 id="题目2参考答案"><a class="header" href="#题目2参考答案">题目2参考答案</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    printf("char大小: %zu 字节\n", sizeof(char));
+    printf("short大小: %zu 字节\n", sizeof(short));
+    printf("int大小: %zu 字节\n", sizeof(int));
+    printf("long大小: %zu 字节\n", sizeof(long));
+    printf("float大小: %zu 字节\n", sizeof(float));
+    printf("double大小: %zu 字节\n", sizeof(double));
+    return 0;
+}
+</code></pre>
+<h3 id="题目3参考答案"><a class="header" href="#题目3参考答案">题目3参考答案</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 15, b = 7, c = 3;
+    
+    printf("a + b - c = %d\n", a + b - c);
+    printf("a * b / c = %d\n", a * b / c);
+    printf("a %% b = %d\n", a % b);
+    printf("(a + b) * c = %d\n", (a + b) * c);
+    
+    return 0;
+}
+</code></pre>
+<h3 id="题目4参考答案"><a class="header" href="#题目4参考答案">题目4参考答案</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    unsigned int a = 0b11001100;  // 0xCC
+    unsigned int b = 0b11110000;  // 0xF0
+    
+    printf("a = 0x%x\n", a);
+    printf("b = 0x%x\n", b);
+    printf("a &amp; b = 0x%x\n", a &amp; b);
+    printf("a | b = 0x%x\n", a | b);
+    printf("a ^ b = 0x%x\n", a ^ b);
+    printf("~a = 0x%x\n", ~a);
+    printf("a &lt;&lt; 2 = 0x%x\n", a &lt;&lt; 2);
+    printf("a &gt;&gt; 2 = 0x%x\n", a &gt;&gt; 2);
+    
+    return 0;
+}
+</code></pre>
+<h3 id="题目5参考答案"><a class="header" href="#题目5参考答案">题目5参考答案</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int a, b;
+    
+    printf("请输入第一个整数: ");
+    scanf("%d", &amp;a);
+    
+    printf("请输入第二个整数: ");
+    scanf("%d", &amp;b);
+    
+    printf("%d + %d = %d\n", a, b, a + b);
+    printf("%d - %d = %d\n", a, b, a - b);
+    printf("%d * %d = %d\n", a, b, a * b);
+    printf("%d / %d = %d\n", a, b, a / b);
+    
+    return 0;
+}
+</code></pre>
+<h3 id="题目6参考答案"><a class="header" href="#题目6参考答案">题目6参考答案</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 10;
+    float b = 3.14f;
+    char c = 'A';
+    double d = 2.71828;
+    short e = 100;
+    
+    printf("变量a: 值=%d, 地址=%p, 大小=%zu字节\n", a, (void*)&amp;a, sizeof(a));
+    printf("变量b: 值=%.2f, 地址=%p, 大小=%zu字节\n", b, (void*)&amp;b, sizeof(b));
+    printf("变量c: 值=%c, 地址=%p, 大小=%zu字节\n", c, (void*)&amp;c, sizeof(c));
+    printf("变量d: 值=%.5f, 地址=%p, 大小=%zu字节\n", d, (void*)&amp;d, sizeof(d));
+    printf("变量e: 值=%d, 地址=%p, 大小=%zu字节\n", e, (void*)&amp;e, sizeof(e));
+    
+    return 0;
+}
+</code></pre>
+<h3 id="题目7参考答案"><a class="header" href="#题目7参考答案">题目7参考答案</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+#define MAX_STUDENTS 100
+#define PI 3.14159
+
+int main() {
+    const int MIN_AGE = 18;
+    const float GRAVITY = 9.8f;
+    
+    printf("MAX_STUDENTS = %d\n", MAX_STUDENTS);
+    printf("PI = %.5f\n", PI);
+    printf("MIN_AGE = %d\n", MIN_AGE);
+    printf("GRAVITY = %.1f\n", GRAVITY);
+    
+    return 0;
+}
+</code></pre>
+<h3 id="题目8参考答案"><a class="header" href="#题目8参考答案">题目8参考答案</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int num = 42;
+    float pi = 3.14159f;
+    
+    printf("数字: %d\n", num);
+    printf("右对齐(10位): %10d\n", num);
+    printf("左对齐(10位): %-10d\n", num);
+    printf("前导零(5位): %05d\n", num);
+    printf("浮点数: %.5f\n", pi);
+    printf("保留2位: %.2f\n", pi);
+    printf("科学计数: %e\n", pi);
+    printf("十六进制: 0x%x\n", num);
+    
+    return 0;
+}
+</code></pre>
+<h3 id="题目9参考答案"><a class="header" href="#题目9参考答案">题目9参考答案</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+#define FLAG_READ    0x01  // 00000001
+#define FLAG_WRITE   0x02  // 00000010
+#define FLAG_EXECUTE 0x04  // 00000100
+
+void print_binary(unsigned int n) {
+    for (int i = 7; i &gt;= 0; i--) {
+        printf("%d", (n &gt;&gt; i) &amp; 1);
+    }
+}
+
+int main() {
+    unsigned int flags = 0;
+    
+    printf("初始flags: 0x%02x (二进制: ", flags);
+    print_binary(flags);
+    printf(")\n");
+    
+    // 设置READ标志
+    flags |= FLAG_READ;
+    printf("设置READ后: 0x%02x (二进制: ", flags);
+    print_binary(flags);
+    printf(")\n");
+    
+    // 设置WRITE标志
+    flags |= FLAG_WRITE;
+    printf("设置WRITE后: 0x%02x (二进制: ", flags);
+    print_binary(flags);
+    printf(")\n");
+    
+    // 检查READ权限
+    if (flags &amp; FLAG_READ) {
+        printf("有READ权限\n");
+    }
+    
+    // 清除WRITE标志
+    flags &amp;= ~FLAG_WRITE;
+    printf("清除WRITE后: 0x%02x (二进制: ", flags);
+    print_binary(flags);
+    printf(")\n");
+    
+    // 切换EXECUTE标志
+    flags ^= FLAG_EXECUTE;
+    printf("切换EXECUTE后: 0x%02x (二进制: ", flags);
+    print_binary(flags);
+    printf(")\n");
+    
+    return 0;
+}
+</code></pre>
+<h3 id="题目10参考答案"><a class="header" href="#题目10参考答案">题目10参考答案</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+#define MAX_NAME_LEN 50
+
+void print_binary(int n) {
+    if (n == 0) {
+        printf("0");
+        return;
+    }
+    int bits[32];
+    int count = 0;
+    while (n &gt; 0) {
+        bits[count++] = n % 2;
+        n /= 2;
+    }
+    for (int i = count - 1; i &gt;= 0; i--) {
+        printf("%d", bits[i]);
+    }
+}
+
+int main() {
+    char name[MAX_NAME_LEN];
+    int age;
+    float score;
+    
+    printf("请输入学生姓名: ");
+    scanf("%s", name);
+    
+    printf("请输入年龄: ");
+    scanf("%d", &amp;age);
+    
+    printf("请输入成绩: ");
+    scanf("%f", &amp;score);
+    
+    printf("\n=== 学生信息 ===\n");
+    printf("姓名: %-20s\n", name);
+    printf("年龄: %5d\n", age);
+    printf("成绩: %.2f\n", score);
+    
+    // 成绩的十六进制（转换为整数）
+    int score_int = (int)score;
+    printf("成绩(十六进制): 0x%x\n", score_int);
+    
+    // 年龄的二进制
+    printf("年龄(二进制): ");
+    print_binary(age);
+    printf("\n");
+    
+    return 0;
+}
+</code></pre>
+</details>
+<hr>
+<h2 id="提交要求"><a class="header" href="#提交要求">提交要求</a></h2>
+<p>完成练习后，请：</p>
+<ol>
+<li>确保所有代码都能编译运行</li>
+<li>测试边界情况（如除零、溢出等）</li>
+<li>思考每道题目的实际应用场景</li>
+<li>记录遇到的问题和解决方法</li>
+</ol>
+<p><strong>下一章</strong>：完成本章练习后，继续学习第2章《控制结构》。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="binaryengineerlearning"><a class="header" href="#binaryengineerlearning">BinaryEngineerLearning</a></h1>
+<blockquote>
+<p>🤖 AI驱动的二进制工程师和系统编程完整学习路径</p>
+</blockquote>
+<p>欢迎！这个仓库包含了从零开始学习二进制工程和软件开发所需的完整资源。通过AI教学系统，逐步掌握C语言、Python、汇编、逆向工程和安全技术。</p>
+<p><a href="../LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
+<a href="https://github.com/Emqo/BinaryEngineerLearning/stargazers"><img src="https://img.shields.io/github/stars/Emqo/BinaryEngineerLearning" alt="GitHub stars"></a></p>
+<h2 id="-目录结构"><a class="header" href="#-目录结构">📁 目录结构</a></h2>
+<pre><code>BinaryEngineerLearning/
+├── src/                           # mdbook 源文件目录
+│   ├── c-language/                # C语言学习
+│   │   ├── chapter01-c-basics/    # 第1章：C语言入门基础
+│   │   │   ├── content.md         # 学习内容（中文）
+│   │   │   └── exercises.md       # 练习题（中文）
+│   │   └── ...
+│   ├── SUMMARY.md                 # 书籍目录
+│   └── introduction.md            # 首页
+│
+├── book.toml                      # mdbook 配置文件
+├── README.md                      # 项目说明（本文件，包含所有内容）
+├── LICENSE                        # 许可证
+└── .github/workflows/            # GitHub Actions 部署配置
+</code></pre>
+<hr>
+<h2 id="-快速开始-1"><a class="header" href="#-快速开始-1">🚀 快速开始</a></h2>
+<h3 id="-在线学习推荐-1"><a class="header" href="#-在线学习推荐-1">🌐 在线学习（推荐）</a></h3>
+<p>访问我们的在线版本：<strong>https://emqo.github.io/BinaryEngineerLearning/</strong></p>
+<ul>
+<li>📖 交互式阅读体验</li>
+<li>💻 在线代码编辑器</li>
+<li>✅ 即时运行和反馈</li>
+<li>🔍 全文搜索功能</li>
+</ul>
+<h3 id="-本地学习-1"><a class="header" href="#-本地学习-1">📚 本地学习</a></h3>
+<h4 id="方法1使用-mdbook推荐"><a class="header" href="#方法1使用-mdbook推荐">方法1：使用 mdbook（推荐）</a></h4>
+<pre><code class="language-bash"># 安装 mdbook
+cargo install mdbook
+
+# 启动本地服务器
+mdbook serve
+
+# 浏览器打开 http://localhost:3000
+</code></pre>
+<h4 id="方法2直接阅读-markdown"><a class="header" href="#方法2直接阅读-markdown">方法2：直接阅读 Markdown</a></h4>
+<p>进入对应的语言目录，例如：</p>
+<pre><code class="language-bash">cd src/c-language/chapter01-c-basics
+# 阅读 content.md 学习内容
+# 完成 exercises.md 中的练习题
+</code></pre>
+<hr>
+<h2 id="-学习计划"><a class="header" href="#-学习计划">📚 学习计划</a></h2>
+<h3 id="-学习目标"><a class="header" href="#-学习目标">📚 学习目标</a></h3>
+<ul>
+<li>掌握底层系统原理和二进制分析技能</li>
+<li>具备扎实的软件开发能力</li>
+<li>能够进行逆向工程和漏洞分析</li>
+<li>能够开发系统级应用和安全工具</li>
+</ul>
+<h3 id="-第一阶段基础夯实3-4个月"><a class="header" href="#-第一阶段基础夯实3-4个月">🗓️ 第一阶段：基础夯实（3-4个月）</a></h3>
+<h4 id="week-1-4-c语言基础"><a class="header" href="#week-1-4-c语言基础">Week 1-4: C语言基础</a></h4>
+<p><strong>目标</strong>：掌握C语言核心概念，理解内存和指针</p>
+<p><strong>学习内容</strong>：</p>
+<ul>
+<li>数据类型、变量、运算符</li>
+<li>控制结构（if/else, for, while）</li>
+<li>函数和递归</li>
+<li><strong>重点</strong>：指针和内存管理</li>
+<li>数组和字符串操作</li>
+<li>结构体和联合体</li>
+<li>文件I/O操作</li>
+</ul>
+<p><strong>实践项目</strong>：</p>
+<ul>
+<li>实现一个简单的内存分配器</li>
+<li>编写一个文件加密/解密工具</li>
+<li>实现基本的数据结构（链表、栈、队列）</li>
+</ul>
+<p><strong>学习方式</strong>：</p>
+<ul>
+<li>🤖 AI教学：通过AI逐步学习每个概念</li>
+<li>📝 实践练习：完成每章的练习题</li>
+<li>💻 在线练习：LeetCode C语言题目（辅助练习）</li>
+</ul>
+<h4 id="week-5-8-python基础"><a class="header" href="#week-5-8-python基础">Week 5-8: Python基础</a></h4>
+<p><strong>目标</strong>：掌握Python编程，用于快速开发和脚本编写</p>
+<p><strong>学习内容</strong>：</p>
+<ul>
+<li>Python语法基础</li>
+<li>面向对象编程</li>
+<li>文件操作和异常处理</li>
+<li>常用库：os, sys, struct, binascii</li>
+<li><strong>重点</strong>：字节操作和二进制数据处理</li>
+<li>网络编程基础（socket）</li>
+<li>正则表达式</li>
+</ul>
+<p><strong>实践项目</strong>：</p>
+<ul>
+<li>编写二进制文件分析脚本</li>
+<li>实现简单的网络扫描工具</li>
+<li>自动化脚本（文件批量处理）</li>
+</ul>
+<p><strong>学习方式</strong>：</p>
+<ul>
+<li>🤖 AI教学：通过AI学习Python语法和特性</li>
+<li>📝 实践练习：完成每章的练习题</li>
+<li>💻 在线文档：Python官方文档（参考）</li>
+</ul>
+<h4 id="week-9-12-数据结构与算法"><a class="header" href="#week-9-12-数据结构与算法">Week 9-12: 数据结构与算法</a></h4>
+<p><strong>目标</strong>：建立算法思维，为后续学习打基础</p>
+<p><strong>学习内容</strong>：</p>
+<ul>
+<li>线性数据结构（数组、链表、栈、队列）</li>
+<li>树和图</li>
+<li>排序和搜索算法</li>
+<li>动态规划基础</li>
+<li>哈希表应用</li>
+</ul>
+<p><strong>实践项目</strong>：</p>
+<ul>
+<li>实现常见数据结构（C语言）</li>
+<li>解决算法问题（LeetCode）</li>
+<li>性能分析和优化</li>
+</ul>
+<p><strong>学习方式</strong>：</p>
+<ul>
+<li>🤖 AI教学：通过AI学习算法和数据结构</li>
+<li>📝 实践练习：实现各种数据结构</li>
+<li>💻 在线练习：LeetCode / Codeforces（实战训练）</li>
+</ul>
+<h3 id="-第二阶段系统深入4-5个月"><a class="header" href="#-第二阶段系统深入4-5个月">🔧 第二阶段：系统深入（4-5个月）</a></h3>
+<h4 id="week-13-16-c进阶"><a class="header" href="#week-13-16-c进阶">Week 13-16: C++进阶</a></h4>
+<p><strong>目标</strong>：掌握C++面向对象和系统编程</p>
+<p><strong>学习内容</strong>：</p>
+<ul>
+<li>类和对象</li>
+<li>继承和多态</li>
+<li>STL容器和算法</li>
+<li>模板编程基础</li>
+<li>内存管理（new/delete, 智能指针）</li>
+<li>多线程编程</li>
+<li>系统调用和API</li>
+</ul>
+<p><strong>实践项目</strong>：</p>
+<ul>
+<li>实现一个简单的调试器</li>
+<li>开发二进制文件解析工具</li>
+<li>多线程网络服务器</li>
+</ul>
+<p><strong>学习方式</strong>：</p>
+<ul>
+<li>🤖 AI教学：通过AI学习C++特性</li>
+<li>📝 实践练习：完成项目实践</li>
+<li>💻 在线参考：CppReference.com（查询语法）</li>
+</ul>
+<h4 id="week-17-24-汇编语言x86x64"><a class="header" href="#week-17-24-汇编语言x86x64">Week 17-24: 汇编语言（x86/x64）</a></h4>
+<p><strong>目标</strong>：理解底层执行机制，能读懂反汇编代码</p>
+<p><strong>学习内容</strong>：</p>
+<ul>
+<li>寄存器（通用寄存器、段寄存器、标志寄存器）</li>
+<li>基本指令（mov, add, sub, cmp, jmp等）</li>
+<li>栈操作和函数调用约定</li>
+<li>内存寻址方式</li>
+<li>条件跳转和循环</li>
+<li>系统调用（Linux/Windows）</li>
+<li><strong>重点</strong>：理解栈帧和局部变量布局</li>
+</ul>
+<p><strong>实践项目</strong>：</p>
+<ul>
+<li>编写简单的汇编程序</li>
+<li>分析C程序的反汇编代码</li>
+<li>理解缓冲区溢出的汇编层面</li>
+</ul>
+<p><strong>学习方式</strong>：</p>
+<ul>
+<li>🤖 AI教学：通过AI学习汇编语言和底层机制</li>
+<li>📝 实践练习：编写汇编程序，分析反汇编代码</li>
+<li>💻 在线工具：Compiler Explorer (godbolt.org)（查看汇编）</li>
+</ul>
+<h4 id="week-25-28-操作系统原理"><a class="header" href="#week-25-28-操作系统原理">Week 25-28: 操作系统原理</a></h4>
+<p><strong>目标</strong>：理解操作系统底层机制</p>
+<p><strong>学习内容</strong>：</p>
+<ul>
+<li>进程和线程</li>
+<li>内存管理（虚拟内存、页表）</li>
+<li>文件系统</li>
+<li>系统调用机制</li>
+<li>中断和异常处理</li>
+<li>进程间通信</li>
+</ul>
+<p><strong>实践项目</strong>：</p>
+<ul>
+<li>实现简单的shell</li>
+<li>编写系统调用包装器</li>
+<li>分析进程内存布局</li>
+</ul>
+<p><strong>学习方式</strong>：</p>
+<ul>
+<li>🤖 AI教学：通过AI深入理解操作系统原理</li>
+<li>📝 实践练习：实现系统调用、分析进程内存</li>
+<li>💻 系统实践：Linux系统编程实践</li>
+</ul>
+<h3 id="-第三阶段专业方向5-6个月"><a class="header" href="#-第三阶段专业方向5-6个月">🎯 第三阶段：专业方向（5-6个月）</a></h3>
+<h4 id="week-29-32-二进制文件格式"><a class="header" href="#week-29-32-二进制文件格式">Week 29-32: 二进制文件格式</a></h4>
+<p><strong>目标</strong>：理解PE、ELF等可执行文件格式</p>
+<p><strong>学习内容</strong>：</p>
+<ul>
+<li>PE文件格式（Windows）</li>
+<li>ELF文件格式（Linux）</li>
+<li>Mach-O格式（macOS）</li>
+<li>节表（Section Table）</li>
+<li>导入/导出表</li>
+<li>重定位表</li>
+<li>调试信息</li>
+</ul>
+<p><strong>实践项目</strong>：</p>
+<ul>
+<li>编写PE文件解析器</li>
+<li>实现简单的加壳/脱壳工具</li>
+<li>分析恶意软件样本结构</li>
+</ul>
+<p><strong>学习方式</strong>：</p>
+<ul>
+<li>🤖 AI教学：通过AI学习PE/ELF文件格式</li>
+<li>📝 实践练习：编写文件解析器</li>
+<li>💻 官方文档：PE/ELF格式官方文档（参考）</li>
+</ul>
+<h4 id="week-33-40-逆向工程基础"><a class="header" href="#week-33-40-逆向工程基础">Week 33-40: 逆向工程基础</a></h4>
+<p><strong>目标</strong>：掌握静态和动态分析方法</p>
+<p><strong>学习内容</strong>：</p>
+<ul>
+<li>IDA Pro / Ghidra使用</li>
+<li>静态分析技术</li>
+<li>动态调试（GDB, WinDbg, x64dbg）</li>
+<li>反混淆技术</li>
+<li>加壳和脱壳</li>
+<li>代码注入技术</li>
+</ul>
+<p><strong>实践项目</strong>：</p>
+<ul>
+<li>逆向分析CTF题目</li>
+<li>分析真实恶意样本（虚拟机环境）</li>
+<li>编写自动化分析脚本</li>
+</ul>
+<p><strong>学习方式</strong>：</p>
+<ul>
+<li>🤖 AI教学：通过AI学习逆向工程技术</li>
+<li>📝 实践练习：使用Ghidra/IDA分析程序</li>
+<li>💻 CTF平台：pwnable.kr, crackmes.one（实战训练）</li>
+</ul>
+<h4 id="week-41-44-漏洞分析"><a class="header" href="#week-41-44-漏洞分析">Week 41-44: 漏洞分析</a></h4>
+<p><strong>目标</strong>：理解常见漏洞类型和利用技术</p>
+<p><strong>学习内容</strong>：</p>
+<ul>
+<li>栈溢出（Stack Overflow）</li>
+<li>堆溢出（Heap Overflow）</li>
+<li>格式化字符串漏洞</li>
+<li>整数溢出</li>
+<li>Use-After-Free</li>
+<li>ROP链构造</li>
+<li>Shellcode编写</li>
+</ul>
+<p><strong>实践项目</strong>：</p>
+<ul>
+<li>分析CVE漏洞</li>
+<li>编写exploit代码</li>
+<li>参与CTF pwn题目</li>
+</ul>
+<p><strong>学习方式</strong>：</p>
+<ul>
+<li>🤖 AI教学：通过AI学习漏洞原理和利用技术</li>
+<li>📝 实践练习：分析CVE漏洞，编写exploit</li>
+<li>💻 漏洞数据库：Exploit-DB, CVE数据库（研究案例）</li>
+</ul>
+<h4 id="week-45-48-rust语言可选但推荐"><a class="header" href="#week-45-48-rust语言可选但推荐">Week 45-48: Rust语言（可选但推荐）</a></h4>
+<p><strong>目标</strong>：掌握现代系统编程语言</p>
+<p><strong>学习内容</strong>：</p>
+<ul>
+<li>Rust语法基础</li>
+<li>所有权和借用</li>
+<li>生命周期</li>
+<li>错误处理</li>
+<li>并发编程</li>
+<li>与C互操作</li>
+</ul>
+<p><strong>实践项目</strong>：</p>
+<ul>
+<li>用Rust重写C项目</li>
+<li>开发系统工具</li>
+<li>编写安全关键应用</li>
+</ul>
+<p><strong>学习方式</strong>：</p>
+<ul>
+<li>🤖 AI教学：通过AI学习Rust语言特性</li>
+<li>📝 实践练习：用Rust重写C项目</li>
+<li>💻 官方文档：Rust官方文档（参考）</li>
+</ul>
+<h3 id="-第四阶段实战应用持续"><a class="header" href="#-第四阶段实战应用持续">🛠️ 第四阶段：实战应用（持续）</a></h3>
+<h4 id="工具开发"><a class="header" href="#工具开发">工具开发</a></h4>
+<ul>
+<li>开发二进制分析工具</li>
+<li>编写自动化fuzzing工具</li>
+<li>实现漏洞扫描器</li>
+<li>开发调试器插件</li>
+</ul>
+<h4 id="安全研究"><a class="header" href="#安全研究">安全研究</a></h4>
+<ul>
+<li>参与漏洞赏金计划</li>
+<li>研究恶意软件</li>
+<li>编写安全工具</li>
+<li>发表技术文章</li>
+</ul>
+<h4 id="开源贡献"><a class="header" href="#开源贡献">开源贡献</a></h4>
+<ul>
+<li>贡献给Ghidra、radare2等项目</li>
+<li>维护自己的工具项目</li>
+<li>参与CTF比赛</li>
+</ul>
+<hr>
+<h2 id="-设置和部署"><a class="header" href="#-设置和部署">🛠️ 设置和部署</a></h2>
+<h3 id="-安装-mdbook"><a class="header" href="#-安装-mdbook">📦 安装 mdbook</a></h3>
+<h4 id="windows"><a class="header" href="#windows">Windows</a></h4>
+<p><strong>方法1：使用 Cargo（推荐）</strong></p>
+<pre><code class="language-powershell"># 1. 安装 Rust（如果还没有）
+# 访问 https://rustup.rs/ 下载并安装
+
+# 2. 安装 mdbook
+cargo install mdbook
+
+# 3. 验证安装
+mdbook --version
+</code></pre>
+<p><strong>方法2：使用预编译二进制</strong></p>
+<pre><code class="language-powershell"># 1. 从 GitHub 下载
+# https://github.com/rust-lang/mdBook/releases
+# 下载 mdbook-x.x.x-x86_64-pc-windows-msvc.zip
+
+# 2. 解压到任意目录
+
+# 3. 添加到 PATH 环境变量
+</code></pre>
+<h4 id="linuxmacos"><a class="header" href="#linuxmacos">Linux/macOS</a></h4>
+<pre><code class="language-bash"># 使用 Cargo 安装
+cargo install mdbook
+
+# 或使用包管理器（如果可用）
+# Ubuntu/Debian: sudo apt install mdbook
+# macOS: brew install mdbook
+</code></pre>
+<h3 id="-本地运行"><a class="header" href="#-本地运行">🚀 本地运行</a></h3>
+<pre><code class="language-bash"># 1. 克隆仓库（如果还没有）
+git clone https://github.com/Emqo/BinaryEngineerLearning.git
+cd BinaryEngineerLearning
+
+# 2. 启动本地服务器
+mdbook serve
+
+# 3. 浏览器打开 http://localhost:3000
+</code></pre>
+<h3 id="-构建静态网站"><a class="header" href="#-构建静态网站">📚 构建静态网站</a></h3>
+<pre><code class="language-bash"># 构建到 book/ 目录
+mdbook build
+
+# 构建的文件在 book/ 目录中
+</code></pre>
+<h3 id="-github-pages-部署"><a class="header" href="#-github-pages-部署">🌐 GitHub Pages 部署</a></h3>
+<p><strong>方法1：使用 GitHub Actions（推荐，已配置）</strong></p>
+<ol>
+<li>确保 <code>.github/workflows/deploy.yml</code> 文件存在（已包含在项目中）</li>
+<li>在 GitHub 仓库设置中启用 GitHub Pages：
+<ul>
+<li>进入仓库 Settings → Pages</li>
+<li>Source: 选择 <strong>GitHub Actions</strong></li>
+</ul>
+</li>
+<li>推送代码到 master 分支，GitHub Actions 会自动构建和部署</li>
+<li>访问地址：<code>https://emqo.github.io/BinaryEngineerLearning/</code></li>
+</ol>
+<p><strong>方法2：手动部署</strong></p>
+<pre><code class="language-bash"># 1. 构建
+mdbook build
+
+# 2. 切换到 gh-pages 分支
+git checkout -b gh-pages
+git rm -rf .
+
+# 3. 复制构建文件
+cp -r book/* .
+
+# 4. 提交
+git add .
+git commit -m "Deploy book"
+git push origin gh-pages
+</code></pre>
+<h3 id="-在线代码运行功能"><a class="header" href="#-在线代码运行功能">💻 在线代码运行功能</a></h3>
+<p>代码块后添加在线运行链接：</p>
+<pre><code class="language-markdown">```c
+#include &lt;stdio.h&gt;
+int main() {
+    printf("Hello!\n");
+    return 0;
+}
+</code></pre>
+<p><a href="https://playcode.io/c/?code=你的代码">在线运行此代码</a></p>
+<pre><code>
+**推荐的在线编译器**：
+1. **PlayCode.io** - https://playcode.io/c/
+2. **Compiler Explorer** - https://godbolt.org/
+3. **Replit** - https://replit.com/
+4. **OnlineGDB** - https://www.onlinegdb.com/
+
+---
+
+## 🎓 学习资源
+
+### 🤖 AI教学系统
+
+**主要学习方式**：AI就是你的百科全书和老师！
+
+- 📚 **理论讲解**：每个概念都有详细解释，像电子书一样系统
+- 💻 **代码示例**：每个知识点都有完整可运行的代码
+- 📝 **练习题**：每章都有配套练习，巩固知识
+- ✅ **作业检查**：AI会检查你的代码，提供改进建议
+- 🔄 **随时答疑**：遇到问题随时提问，获得即时解答
+- 🎯 **个性化学习**：根据你的进度和理解程度调整教学
+
+**学习流程**：
+1. 学习内容：阅读AI生成的学习材料（`content.md`）
+2. 完成练习：做每章的练习题（`exercises.md`）
+3. 提交作业：告诉AI"我学完了"、"我改完写完题目了"
+4. 检查理解：AI检查你的作业和理解程度
+5. 继续下一章：确认理解后，AI生成下一章内容
+
+### 🌐 在线学习平台
+
+#### 编程练习
+- **LeetCode** (https://leetcode.cn/) - 算法和数据结构练习
+- **Codeforces** (https://codeforces.com/) - 算法竞赛平台
+- **HackerRank** (https://www.hackerrank.com/) - 编程挑战和竞赛
+- **Project Euler** (https://projecteuler.net/) - 数学和编程问题
+
+#### CTF和安全平台
+- **pwnable.kr** (http://pwnable.kr/) - 二进制安全挑战
+- **crackmes.one** (https://crackmes.one/) - 逆向工程挑战
+- **CTFtime** (https://ctftime.org/) - CTF比赛信息
+- **Exploit-DB** (https://www.exploit-db.com/) - 漏洞利用数据库
+- **Hack The Box** (https://www.hackthebox.com/) - 渗透测试平台
+
+### 🛠️ 开发工具
+
+#### IDE和编辑器
+- **Visual Studio Code** - https://code.visualstudio.com/
+- **Visual Studio** (Windows) - https://visualstudio.microsoft.com/
+- **CLion** (JetBrains) - https://www.jetbrains.com/clion/
+
+#### 调试器
+- **GDB** (Linux) - GNU调试器
+- **WinDbg** (Windows) - Windows官方调试器
+- **x64dbg** - https://x64dbg.com/ - Windows用户态调试器
+- **LLDB** (macOS/Linux) - LLVM调试器
+
+#### 逆向工具
+- **IDA Pro** - 商业逆向工具
+- **Ghidra** - https://ghidra-sre.org/ - NSA开源逆向工具
+- **radare2** - https://rada.re/ - 开源逆向框架
+- **Binary Ninja** - 商业逆向工具
+
+#### 分析工具
+- **Wireshark** - https://www.wireshark.org/ - 网络协议分析
+- **Process Monitor** (Windows) - 进程监控工具
+- **Process Hacker** - https://processhacker.sourceforge.io/ - 进程和内存分析
+- **PE-bear** - PE文件分析工具
+- **HxD** (Windows) - https://mh-nexus.de/en/hxd/ - 十六进制编辑器
+
+### 📖 技术社区
+
+#### 中文社区
+- **看雪论坛** (https://bbs.pediy.com/) - 安全技术社区
+- **安全客** (https://www.anquanke.com/) - 安全资讯和技术文章
+- **先知社区** (https://xz.aliyun.com/) - 安全技术分享
+
+#### 国际社区
+- **Stack Overflow** (https://stackoverflow.com/) - 编程问答社区
+- **Reddit** - r/ReverseEngineering, r/lowlevel, r/learnprogramming
+- **GitHub** (https://github.com/) - 开源项目
+- **Hacker News** (https://news.ycombinator.com/) - 技术新闻和讨论
+
+### 🔗 实用链接
+
+#### 在线工具
+- **Compiler Explorer**: https://godbolt.org/ - 查看汇编代码
+- **Online GDB**: https://www.onlinegdb.com/ - 在线调试器
+- **ASCII Table**: https://www.asciitable.com/ - ASCII码表
+
+#### 文档资源
+- **C标准文档**: https://en.cppreference.com/w/c
+- **Python官方文档**: https://docs.python.org/zh-cn/3/
+- **x86指令参考**: https://www.felixcloutier.com/x86/
+- **PE格式文档**: https://docs.microsoft.com/en-us/windows/win32/debug/pe-format
+
+---
+
+## 💡 学习建议
+
+1. **AI互动学习**：遇到问题随时问AI，获得详细解答
+2. **循序渐进**：按小节学习，完成当前小节再继续
+3. **多动手**：理论结合实践，每学一个概念就写代码
+4. **完成练习**：每章都有练习题，必须完成
+5. **做笔记**：记录学习心得和遇到的问题
+6. **持续学习**：技术更新快，保持学习热情
+7. **项目驱动**：通过实际项目巩固知识
+8. **代码审查**：让AI检查你的代码，获得改进建议
+
+---
+
+## 🎯 学习目标
+
+完成本学习计划后，你将能够：
+
+- ✅ 理解底层系统原理（内存、进程、文件系统）
+- ✅ 进行二进制文件分析和逆向工程
+- ✅ 开发系统级应用和安全工具
+- ✅ 分析常见安全漏洞
+- ✅ 使用专业工具（IDA、Ghidra、GDB等）
+
+---
+
+## 📖 推荐学习顺序
+
+1. **第1章**：C语言入门基础（AI教学 + 练习题）
+2. **第2章**：控制结构（AI教学 + 练习题）
+3. **第3章**：函数和递归（AI教学 + 练习题）
+4. **第4章**：数组和字符串（AI教学 + 练习题）
+5. **第5章**：指针基础（AI教学 + 练习题）
+6. **第6章**：指针进阶和内存管理（AI教学 + 练习题）
+7. **第7章**：结构体和联合体（AI教学 + 练习题）
+8. **第8章**：文件I/O操作（AI教学 + 练习题）
+9. **后续**：Python、算法、C++、汇编等（继续AI教学）
+
+**学习流程**：学习 → 练习 → 告诉AI"我学完了" → AI检查 → 继续下一章
+
+---
+
+## 🔧 故障排除
+
+### mdbook 命令未找到
+- 检查是否已安装 Rust：`rustc --version`
+- 检查 PATH 环境变量
+- Windows: 重启终端或重新登录
+
+### 构建失败
+- 检查 `src/SUMMARY.md` 中的链接是否正确
+- 确保所有引用的文件都存在
+- 查看错误信息定位问题
+
+### GitHub Pages 不更新
+- 检查 GitHub Actions 是否成功运行
+- 确认 Pages 设置正确（Source: GitHub Actions）
+- 查看 Actions 标签页中的构建日志
+
+### 端口被占用
+```bash
+# 指定其他端口
+mdbook serve --port 3001
+</code></pre>
+<hr>
+<h2 id="-贡献"><a class="header" href="#-贡献">📝 贡献</a></h2>
+<p>欢迎提交问题和改进建议！</p>
+<ul>
+<li>🐛 发现问题？<a href="https://github.com/Emqo/BinaryEngineerLearning/issues">提交Issue</a></li>
+<li>💡 有改进建议？<a href="https://github.com/Emqo/BinaryEngineerLearning/pulls">提交Pull Request</a></li>
+<li>⭐ 觉得有用？给个Star支持一下！</li>
+</ul>
+<hr>
+<h2 id="-许可证"><a class="header" href="#-许可证">📄 许可证</a></h2>
+<p>本仓库内容仅供学习使用。详见 <a href="../LICENSE">LICENSE</a> 文件。</p>
+<hr>
+<h2 id="-ai就是你的百科全书"><a class="header" href="#-ai就是你的百科全书">🤖 AI就是你的百科全书</a></h2>
+<p>在这个学习计划中：</p>
+<ul>
+<li>📚 <strong>AI生成学习材料</strong>：每个概念都有详细讲解，像电子书一样</li>
+<li>💻 <strong>代码示例</strong>：每个知识点都有完整可运行的代码</li>
+<li>📝 <strong>练习题</strong>：每章都有配套练习，巩固知识</li>
+<li>✅ <strong>作业检查</strong>：AI会检查你的代码和理解程度</li>
+<li>🔄 <strong>随时答疑</strong>：遇到问题随时提问，获得即时解答</li>
+</ul>
+<p>记住：<strong>编程是一门实践性很强的技能，多写代码、多问AI、多实践！</strong></p>
+<p><strong>AI就是未来的数据化百科全书，让我们开始学习吧！</strong> 🚀</p>
+<hr>
+<p><strong>开始你的学习之旅吧！</strong> 🎉</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="theme/code-runner-a4e769ab.js"></script>
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+
+    </div>
+    </body>
+</html>

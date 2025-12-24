@@ -1,0 +1,334 @@
+/**
+ * 代码运行器 - 使用 Piston API
+ * 支持 C、C++、Python、Assembly 等语言
+ */
+
+// 语言配置映射
+const LANGUAGE_CONFIG = {
+    'c': {
+        pistonLang: 'c',
+        codemirrorMode: 'text/x-csrc',
+        name: 'C',
+        version: '*'
+    },
+    'cpp': {
+        pistonLang: 'cpp',
+        codemirrorMode: 'text/x-c++src',
+        name: 'C++',
+        version: '*'
+    },
+    'c++': {
+        pistonLang: 'cpp',
+        codemirrorMode: 'text/x-c++src',
+        name: 'C++',
+        version: '*'
+    },
+    'python': {
+        pistonLang: 'python3',
+        codemirrorMode: 'python',
+        name: 'Python 3',
+        version: '*'
+    },
+    'py': {
+        pistonLang: 'python3',
+        codemirrorMode: 'python',
+        name: 'Python 3',
+        version: '*'
+    },
+    'assembly': {
+        pistonLang: 'nasm',
+        codemirrorMode: 'gas',
+        name: 'x86-64 Assembly',
+        version: '*'
+    },
+    'asm': {
+        pistonLang: 'nasm',
+        codemirrorMode: 'gas',
+        name: 'x86-64 Assembly',
+        version: '*'
+    },
+    'x86': {
+        pistonLang: 'nasm',
+        codemirrorMode: 'gas',
+        name: 'x86-64 Assembly',
+        version: '*'
+    },
+    'x86-64': {
+        pistonLang: 'nasm',
+        codemirrorMode: 'gas',
+        name: 'x86-64 Assembly',
+        version: '*'
+    }
+};
+
+// Piston API 端点
+const PISTON_API = 'https://emkc.org/api/v2/piston/execute';
+
+/**
+ * 检测代码块的语言
+ */
+function detectLanguage(codeBlock) {
+    const classList = codeBlock.classList;
+    
+    // mdbook 会在代码块上添加语言类，如 'language-c', 'language-python'
+    for (let className of classList) {
+        if (className.startsWith('language-')) {
+            const lang = className.replace('language-', '').toLowerCase();
+            return LANGUAGE_CONFIG[lang] ? lang : 'c'; // 默认 C 语言
+        }
+    }
+    
+    return 'c'; // 默认 C 语言
+}
+
+/**
+ * 使用 Piston API 执行代码
+ */
+async function runCode(code, language) {
+    const config = LANGUAGE_CONFIG[language];
+    if (!config) {
+        throw new Error(`不支持的语言: ${language}`);
+    }
+
+    try {
+        const response = await fetch(PISTON_API, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                language: config.pistonLang,
+                version: config.version,
+                files: [{
+                    content: code
+                }],
+                stdin: '',
+                args: []
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`API 请求失败: ${response.status}`);
+        }
+
+        const result = await response.json();
+        
+        return {
+            stdout: result.run.stdout || '',
+            stderr: result.run.stderr || '',
+            output: result.run.output || '',
+            code: result.run.code || 0,
+            language: config.name
+        };
+    } catch (error) {
+        throw new Error(`执行代码时出错: ${error.message}`);
+    }
+}
+
+/**
+ * 显示执行结果
+ */
+function showResult(resultContainer, result) {
+    resultContainer.innerHTML = '';
+    resultContainer.style.display = 'block';
+
+    const resultDiv = document.createElement('div');
+    resultDiv.className = 'code-result';
+
+    // 状态指示器
+    const statusDiv = document.createElement('div');
+    statusDiv.className = result.code === 0 ? 'result-success' : 'result-error';
+    statusDiv.textContent = result.code === 0 ? '✓ 执行成功' : '✗ 执行失败';
+    resultDiv.appendChild(statusDiv);
+
+    // 标准输出
+    if (result.stdout) {
+        const stdoutDiv = document.createElement('div');
+        stdoutDiv.className = 'result-output';
+        stdoutDiv.innerHTML = `<strong>输出：</strong><pre>${escapeHtml(result.stdout)}</pre>`;
+        resultDiv.appendChild(stdoutDiv);
+    }
+
+    // 标准错误
+    if (result.stderr) {
+        const stderrDiv = document.createElement('div');
+        stderrDiv.className = 'result-error-output';
+        stderrDiv.innerHTML = `<strong>错误：</strong><pre>${escapeHtml(result.stderr)}</pre>`;
+        resultDiv.appendChild(stderrDiv);
+    }
+
+    // 如果没有输出也没有错误，显示提示
+    if (!result.stdout && !result.stderr) {
+        const noOutputDiv = document.createElement('div');
+        noOutputDiv.className = 'result-no-output';
+        noOutputDiv.textContent = '程序执行完成，但没有输出。';
+        resultDiv.appendChild(noOutputDiv);
+    }
+
+    resultContainer.appendChild(resultDiv);
+}
+
+/**
+ * 显示错误信息
+ */
+function showError(resultContainer, errorMessage) {
+    resultContainer.innerHTML = '';
+    resultContainer.style.display = 'block';
+
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'code-result result-error';
+    errorDiv.innerHTML = `<div class="result-error">✗ 错误</div><pre>${escapeHtml(errorMessage)}</pre>`;
+    resultContainer.appendChild(errorDiv);
+}
+
+/**
+ * HTML 转义
+ */
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+/**
+ * 打开代码编辑器
+ */
+function openEditor(code, language) {
+    const config = LANGUAGE_CONFIG[language];
+    if (!config) {
+        alert(`不支持的语言: ${language}`);
+        return;
+    }
+
+    // 创建编辑器模态框
+    const modal = document.createElement('div');
+    modal.className = 'code-editor-modal';
+    modal.innerHTML = `
+        <div class="code-editor-container">
+            <div class="code-editor-header">
+                <span>编辑代码 (${config.name})</span>
+                <button class="close-editor-btn" onclick="this.closest('.code-editor-modal').remove()">×</button>
+            </div>
+            <div class="code-editor-wrapper">
+                <textarea id="code-editor-textarea" class="code-editor-textarea">${escapeHtml(code)}</textarea>
+            </div>
+            <div class="code-editor-footer">
+                <button class="run-editor-btn" onclick="runEditorCode('${language}')">▶ 运行代码</button>
+                <button class="close-editor-btn" onclick="this.closest('.code-editor-modal').remove()">关闭</button>
+            </div>
+            <div class="code-editor-result"></div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    // 简单的代码编辑器（可以后续集成 CodeMirror）
+    const textarea = modal.querySelector('#code-editor-textarea');
+    textarea.style.width = '100%';
+    textarea.style.height = '400px';
+    textarea.style.fontFamily = 'monospace';
+    textarea.style.fontSize = '14px';
+    textarea.style.padding = '10px';
+    textarea.style.border = '1px solid #ddd';
+    textarea.style.borderRadius = '4px';
+}
+
+/**
+ * 运行编辑器中的代码
+ */
+window.runEditorCode = async function(language) {
+    const modal = document.querySelector('.code-editor-modal');
+    const textarea = modal.querySelector('#code-editor-textarea');
+    const resultContainer = modal.querySelector('.code-editor-result');
+    const runButton = modal.querySelector('.run-editor-btn');
+
+    const code = textarea.value;
+    
+    runButton.disabled = true;
+    runButton.textContent = '运行中...';
+
+    try {
+        const result = await runCode(code, language);
+        showResult(resultContainer, result);
+    } catch (error) {
+        showError(resultContainer, error.message);
+    } finally {
+        runButton.disabled = false;
+        runButton.textContent = '▶ 运行代码';
+    }
+};
+
+/**
+ * 初始化代码运行器
+ */
+function initCodeRunner() {
+    document.querySelectorAll('pre code').forEach(codeBlock => {
+        // 跳过已经有运行器的代码块
+        if (codeBlock.parentElement.querySelector('.code-runner-buttons')) {
+            return;
+        }
+
+        const language = detectLanguage(codeBlock);
+        const code = codeBlock.textContent;
+        const config = LANGUAGE_CONFIG[language];
+
+        if (!config) {
+            return; // 不支持的语言，跳过
+        }
+
+        // 创建按钮容器
+        const buttonContainer = document.createElement('div');
+        buttonContainer.className = 'code-runner-buttons';
+
+        // 运行按钮
+        const runButton = document.createElement('button');
+        runButton.className = 'run-code-btn';
+        runButton.textContent = '▶ 运行代码';
+        runButton.onclick = async function() {
+            runButton.disabled = true;
+            runButton.textContent = '运行中...';
+
+            // 创建结果显示容器
+            let resultContainer = codeBlock.parentElement.querySelector('.code-result-container');
+            if (!resultContainer) {
+                resultContainer = document.createElement('div');
+                resultContainer.className = 'code-result-container';
+                codeBlock.parentElement.appendChild(resultContainer);
+            }
+
+            try {
+                const result = await runCode(code, language);
+                showResult(resultContainer, result);
+            } catch (error) {
+                showError(resultContainer, error.message);
+            } finally {
+                runButton.disabled = false;
+                runButton.textContent = '▶ 运行代码';
+            }
+        };
+
+        // 编辑按钮
+        const editButton = document.createElement('button');
+        editButton.className = 'edit-code-btn';
+        editButton.textContent = '✏️ 编辑代码';
+        editButton.onclick = function() {
+            openEditor(code, language);
+        };
+
+        buttonContainer.appendChild(runButton);
+        buttonContainer.appendChild(editButton);
+
+        // 插入到代码块后面
+        codeBlock.parentElement.appendChild(buttonContainer);
+    });
+}
+
+// 页面加载完成后初始化
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCodeRunner);
+} else {
+    initCodeRunner();
+}
+
+// 监听 mdbook 的页面切换（SPA 应用）
+document.addEventListener('mdbook-page-changed', initCodeRunner);
+
