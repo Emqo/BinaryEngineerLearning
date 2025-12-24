@@ -66,6 +66,7 @@ const PISTON_API = 'https://emkc.org/api/v2/piston/execute';
 
 /**
  * 检测代码块的语言
+ * 返回语言代码，如果没有语言标记则返回 null
  */
 function detectLanguage(codeBlock) {
     const classList = codeBlock.classList;
@@ -74,11 +75,11 @@ function detectLanguage(codeBlock) {
     for (let className of classList) {
         if (className.startsWith('language-')) {
             const lang = className.replace('language-', '').toLowerCase();
-            return LANGUAGE_CONFIG[lang] ? lang : 'c'; // 默认 C 语言
+            return LANGUAGE_CONFIG[lang] ? lang : null; // 如果不在支持列表中，返回 null
         }
     }
     
-    return 'c'; // 默认 C 语言
+    return null; // 没有语言标记，返回 null
 }
 
 /**
@@ -327,6 +328,12 @@ function initCodeRunner() {
         }
 
         const language = detectLanguage(codeBlock);
+        
+        // 如果没有语言标记（纯文本代码块），跳过处理
+        if (!language) {
+            return;
+        }
+        
         const config = LANGUAGE_CONFIG[language];
 
         if (!config) {
