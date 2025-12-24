@@ -70,6 +70,33 @@
     box-shadow: none;
 }
 
+/* 显示参考答案按钮 */
+.show-answer-btn {
+    padding: 10px 20px;
+    font-size: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: linear-gradient(145deg, #2196F3, #1976D2);
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-left: 10px;
+}
+
+.show-answer-btn:hover {
+    background: linear-gradient(145deg, #1976D2, #1565C0);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.show-answer-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 .edit-code-btn {
     background-color: #2196F3;
     color: white;
