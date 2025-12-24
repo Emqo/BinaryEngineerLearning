@@ -206,8 +206,6 @@
 
 .code-block-editable .editable-code {
     width: 100%;
-    min-height: auto;
-    max-height: none;
     font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
     font-size: 14px;
     line-height: 1.6;
@@ -218,13 +216,16 @@
     color: var(--code-runner-text);
     resize: none;
     white-space: pre;
-    overflow: visible;
+    overflow: hidden;
     overflow-wrap: break-word;
     word-wrap: break-word;
     tab-size: 4;
     box-sizing: border-box;
     transition: all 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* 确保高度自动调整 */
+    height: auto;
+    min-height: 60px;
 }
 
 .code-block-editable .editable-code:focus {
@@ -232,12 +233,6 @@
     border-color: #4CAF50;
     box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2), 0 2px 8px rgba(0, 0, 0, 0.15);
     transform: translateY(-1px);
-}
-
-/* 自动调整高度，不显示滚动条 */
-.code-block-editable .editable-code {
-    height: auto;
-    overflow-y: visible;
 }
 
 /* 代码编辑器模态框 */

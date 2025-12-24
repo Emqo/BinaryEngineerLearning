@@ -263,8 +263,14 @@ window.runEditorCode = async function(language) {
 function autoResizeTextarea(textarea) {
     // 重置高度以获取正确的 scrollHeight
     textarea.style.height = 'auto';
-    // 设置高度为内容高度
-    textarea.style.height = textarea.scrollHeight + 'px';
+    // 计算内容高度（包括 padding）
+    const scrollHeight = textarea.scrollHeight;
+    // 设置最小高度，确保至少显示一行
+    const minHeight = 60;
+    // 设置高度为内容高度，但不小于最小高度
+    textarea.style.height = Math.max(scrollHeight, minHeight) + 'px';
+    // 确保没有滚动条
+    textarea.style.overflow = 'hidden';
 }
 
 /**
@@ -285,16 +291,23 @@ function makeCodeBlockEditable(codeBlock, language) {
     
     // 复制代码块的样式
     const computedStyle = window.getComputedStyle(codeBlock);
-    textarea.style.fontFamily = computedStyle.fontFamily;
-    textarea.style.fontSize = computedStyle.fontSize;
-    textarea.style.lineHeight = computedStyle.lineHeight;
+    textarea.style.fontFamily = computedStyle.fontFamily || 'Consolas, Monaco, "Courier New", monospace';
+    textarea.style.fontSize = computedStyle.fontSize || '14px';
+    textarea.style.lineHeight = computedStyle.lineHeight || '1.6';
     
-    // 自动调整高度
-    autoResizeTextarea(textarea);
+    // 等待 DOM 更新后调整高度
+    setTimeout(() => {
+        autoResizeTextarea(textarea);
+    }, 0);
     
     // 监听输入，自动调整高度
     textarea.addEventListener('input', function() {
         autoResizeTextarea(this);
+    });
+    
+    // 监听窗口大小变化
+    window.addEventListener('resize', function() {
+        autoResizeTextarea(textarea);
     });
     
     // 替换 code 元素
