@@ -45,8 +45,8 @@
 .exercise-card strong {
     color: var(--code-runner-text);
     font-size: 15px;
-    display: block;
-    margin-bottom: 12px;
+    display: inline;
+    margin-bottom: 0;
 }
 
 .exercise-card ul,
