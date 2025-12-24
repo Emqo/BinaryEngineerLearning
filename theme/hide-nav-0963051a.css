@@ -1,0 +1,22 @@
+/**
+ * 隐藏导航按钮样式
+ */
+
+/* 隐藏上一章/下一章导航按钮 */
+.nav-wrapper,
+.nav-wide-wrapper {
+    display: none !important;
+}
+
+/* 隐藏移动端导航按钮 */
+.mobile-nav-chapters,
+.nav-chapters {
+    display: none !important;
+}
+
+/* 隐藏章节导航容器 */
+nav.nav-wrapper,
+nav.nav-wide-wrapper {
+    display: none !important;
+}
+

@@ -99,11 +99,13 @@ h2 {
     }
 }
 
-.exercise-answer h3 {
+.exercise-answer h3,
+.exercise-answer h4.answer-title {
     margin-top: 0;
     color: #4CAF50;
     font-size: 18px;
     margin-bottom: 15px;
+    font-weight: 600;
 }
 
 .exercise-answer pre {
