@@ -1,0 +1,18 @@
+/**
+ * 程序员字体配置
+ * 优先使用 Fira Code（支持连字），回退到其他等宽字体
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap');
+
+/* 全局代码字体 */
+pre, code, .editable-code, textarea.code-editor-textarea {
+    font-family: 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace !important;
+    font-feature-settings: "liga" 1, "calt" 1; /* 启用 Fira Code 连字 */
+}
+
+/* 确保所有代码相关元素使用等宽字体 */
+code, kbd, samp, pre {
+    font-family: 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+

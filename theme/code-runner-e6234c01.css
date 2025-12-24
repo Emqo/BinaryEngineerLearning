@@ -119,7 +119,7 @@
     padding: 20px;
     background-color: var(--code-runner-bg);
     color: var(--code-runner-text);
-    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-family: 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
     font-size: 14px;
     line-height: 1.6;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -233,7 +233,7 @@
 
 .code-block-editable .editable-code {
     width: 100%;
-    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-family: 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
     font-size: 14px;
     line-height: 1.6;
     padding: 16px;
@@ -309,7 +309,7 @@
 .code-editor-textarea {
     width: 100%;
     min-height: 400px;
-    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-family: 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
     font-size: 14px;
     line-height: 1.5;
     padding: 10px;

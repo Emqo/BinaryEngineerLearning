@@ -291,7 +291,7 @@ function makeCodeBlockEditable(codeBlock, language) {
     
     // 复制代码块的样式
     const computedStyle = window.getComputedStyle(codeBlock);
-    textarea.style.fontFamily = computedStyle.fontFamily || 'Consolas, Monaco, "Courier New", monospace';
+    textarea.style.fontFamily = computedStyle.fontFamily || '"Fira Code", Consolas, Monaco, "Courier New", monospace';
     textarea.style.fontSize = computedStyle.fontSize || '14px';
     textarea.style.lineHeight = computedStyle.lineHeight || '1.6';
     

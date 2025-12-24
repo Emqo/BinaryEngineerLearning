@@ -61,6 +61,7 @@
     font-size: 13px;
     color: #4CAF50;
     border: 1px solid var(--code-runner-border);
+    font-family: 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
 }
 
 /* 题目标题样式 */
@@ -79,18 +80,6 @@ h2 {
     border: 2px solid #4CAF50;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
-    animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .exercise-answer h3,
@@ -112,7 +101,7 @@ h2 {
 }
 
 .exercise-answer code {
-    font-family: var(--font-mono, 'Consolas', 'Monaco', 'Courier New', monospace);
+    font-family: 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
     font-size: 14px;
     line-height: 1.6;
     color: var(--code-runner-text);
@@ -150,14 +139,18 @@ h2:has-text("🌟") {
     position: relative;
 }
 
-/* 代码块在题目中的样式 */
+/* 代码块在题目中的样式 - 美化非代码示例 */
 .exercise-card pre {
     background-color: var(--code-runner-pre-bg);
     border: 1px solid var(--code-runner-border);
-    border-radius: 6px;
-    padding: 15px;
+    border-radius: 8px;
+    padding: 16px;
     margin: 15px 0;
     overflow-x: auto;
+    font-family: 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .exercise-card pre code {
@@ -165,6 +158,8 @@ h2:has-text("🌟") {
     border: none;
     padding: 0;
     color: var(--code-runner-text);
+    font-family: inherit;
+    font-size: inherit;
 }
 
 /* 响应式设计 */
