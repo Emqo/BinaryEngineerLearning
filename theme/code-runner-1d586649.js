@@ -258,6 +258,34 @@ window.runEditorCode = async function(language) {
 };
 
 /**
+ * 将代码块转换为可编辑的 textarea
+ */
+function makeCodeBlockEditable(codeBlock, language) {
+    const preElement = codeBlock.parentElement;
+    const code = codeBlock.textContent;
+    
+    // 标记为已处理
+    preElement.classList.add('code-block-editable');
+    
+    // 创建 textarea 替换 code 元素
+    const textarea = document.createElement('textarea');
+    textarea.className = 'editable-code';
+    textarea.value = code;
+    textarea.setAttribute('data-language', language);
+    
+    // 复制代码块的样式
+    const computedStyle = window.getComputedStyle(codeBlock);
+    textarea.style.fontFamily = computedStyle.fontFamily;
+    textarea.style.fontSize = computedStyle.fontSize;
+    textarea.style.lineHeight = computedStyle.lineHeight;
+    
+    // 替换 code 元素
+    codeBlock.replaceWith(textarea);
+    
+    return textarea;
+}
+
+/**
  * 初始化代码运行器
  */
 function initCodeRunner() {
@@ -268,13 +296,15 @@ function initCodeRunner() {
         }
 
         const language = detectLanguage(codeBlock);
-        const code = codeBlock.textContent;
         const config = LANGUAGE_CONFIG[language];
 
         if (!config) {
             return; // 不支持的语言，跳过
         }
 
+        // 将代码块转换为可编辑的 textarea
+        const textarea = makeCodeBlockEditable(codeBlock, language);
+        
         // 创建按钮容器
         const buttonContainer = document.createElement('div');
         buttonContainer.className = 'code-runner-buttons';
@@ -287,12 +317,15 @@ function initCodeRunner() {
             runButton.disabled = true;
             runButton.textContent = '运行中...';
 
+            // 获取当前代码
+            const code = textarea.value;
+
             // 创建结果显示容器
-            let resultContainer = codeBlock.parentElement.querySelector('.code-result-container');
+            let resultContainer = textarea.parentElement.querySelector('.code-result-container');
             if (!resultContainer) {
                 resultContainer = document.createElement('div');
                 resultContainer.className = 'code-result-container';
-                codeBlock.parentElement.appendChild(resultContainer);
+                textarea.parentElement.appendChild(resultContainer);
             }
 
             try {
@@ -306,19 +339,10 @@ function initCodeRunner() {
             }
         };
 
-        // 编辑按钮
-        const editButton = document.createElement('button');
-        editButton.className = 'edit-code-btn';
-        editButton.textContent = '✏️ 编辑代码';
-        editButton.onclick = function() {
-            openEditor(code, language);
-        };
-
         buttonContainer.appendChild(runButton);
-        buttonContainer.appendChild(editButton);
 
         // 插入到代码块后面
-        codeBlock.parentElement.appendChild(buttonContainer);
+        textarea.parentElement.appendChild(buttonContainer);
     });
 }
 

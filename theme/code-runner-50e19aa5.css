@@ -1,6 +1,27 @@
 /**
  * 代码运行器样式
+ * 适配 mdbook 深色主题
  */
+
+/* 使用 mdbook 的 CSS 变量 */
+:root {
+    --code-runner-bg: var(--bg, #f9f9f9);
+    --code-runner-border: var(--sidebar-border, #ddd);
+    --code-runner-text: var(--fg, #333);
+    --code-runner-pre-bg: var(--code-bg, #fff);
+    --code-runner-pre-border: var(--sidebar-border, #e0e0e0);
+}
+
+/* 深色主题适配 */
+.navy,
+.coal,
+.ayu {
+    --code-runner-bg: var(--bg, #1e1e1e);
+    --code-runner-border: var(--sidebar-border, #444);
+    --code-runner-text: var(--fg, #d4d4d4);
+    --code-runner-pre-bg: var(--code-bg, #252526);
+    --code-runner-pre-border: var(--sidebar-border, #3e3e42);
+}
 
 /* 按钮容器 */
 .code-runner-buttons {
@@ -55,10 +76,11 @@
 }
 
 .code-result {
-    border: 1px solid #ddd;
+    border: 1px solid var(--code-runner-border);
     border-radius: 4px;
     padding: 15px;
-    background-color: #f9f9f9;
+    background-color: var(--code-runner-bg);
+    color: var(--code-runner-text);
     font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
     font-size: 13px;
     line-height: 1.5;
@@ -87,30 +109,68 @@
 .result-error-output strong {
     display: block;
     margin-bottom: 5px;
-    color: #333;
+    color: var(--code-runner-text);
 }
 
 .result-output pre,
 .result-error-output pre {
     margin: 0;
     padding: 10px;
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
+    background-color: var(--code-runner-pre-bg);
+    border: 1px solid var(--code-runner-pre-border);
     border-radius: 3px;
     white-space: pre-wrap;
     word-wrap: break-word;
     overflow-x: auto;
+    color: var(--code-runner-text);
 }
 
 .result-error-output pre {
-    background-color: #ffebee;
+    background-color: rgba(244, 67, 54, 0.1);
     border-color: #f44336;
 }
 
 .result-no-output {
-    color: #999;
+    color: var(--code-runner-text);
+    opacity: 0.7;
     font-style: italic;
     margin-top: 10px;
+}
+
+/* 可编辑代码块样式 */
+.code-block-editable {
+    position: relative;
+}
+
+.code-block-editable pre {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+.code-block-editable .editable-code {
+    width: 100%;
+    min-height: 100px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 10px;
+    border: 1px solid var(--code-runner-border);
+    border-radius: 4px;
+    background-color: var(--code-runner-pre-bg);
+    color: var(--code-runner-text);
+    resize: vertical;
+    white-space: pre;
+    overflow-x: auto;
+    tab-size: 4;
+    box-sizing: border-box;
+}
+
+.code-block-editable .editable-code:focus {
+    outline: 2px solid #4CAF50;
+    outline-offset: 2px;
+    border-color: #4CAF50;
 }
 
 /* 代码编辑器模态框 */
@@ -129,7 +189,8 @@
 }
 
 .code-editor-container {
-    background-color: white;
+    background-color: var(--code-runner-bg);
+    color: var(--code-runner-text);
     border-radius: 8px;
     width: 100%;
     max-width: 900px;
@@ -141,12 +202,13 @@
 
 .code-editor-header {
     padding: 15px 20px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--code-runner-border);
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-weight: bold;
     font-size: 16px;
+    color: var(--code-runner-text);
 }
 
 .code-editor-wrapper {
@@ -162,14 +224,16 @@
     font-size: 14px;
     line-height: 1.5;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--code-runner-border);
     border-radius: 4px;
     resize: vertical;
+    background-color: var(--code-runner-pre-bg);
+    color: var(--code-runner-text);
 }
 
 .code-editor-footer {
     padding: 15px 20px;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid var(--code-runner-border);
     display: flex;
     gap: 10px;
     justify-content: flex-end;
@@ -178,15 +242,16 @@
 .close-editor-btn {
     padding: 8px 16px;
     font-size: 14px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--code-runner-border);
     border-radius: 4px;
-    background-color: #f5f5f5;
+    background-color: var(--code-runner-bg);
+    color: var(--code-runner-text);
     cursor: pointer;
     transition: background-color 0.2s;
 }
 
 .close-editor-btn:hover {
-    background-color: #e0e0e0;
+    background-color: var(--code-runner-pre-bg);
 }
 
 .run-editor-btn {
