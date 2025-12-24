@@ -258,6 +258,16 @@ window.runEditorCode = async function(language) {
 };
 
 /**
+ * 自动调整 textarea 高度
+ */
+function autoResizeTextarea(textarea) {
+    // 重置高度以获取正确的 scrollHeight
+    textarea.style.height = 'auto';
+    // 设置高度为内容高度
+    textarea.style.height = textarea.scrollHeight + 'px';
+}
+
+/**
  * 将代码块转换为可编辑的 textarea
  */
 function makeCodeBlockEditable(codeBlock, language) {
@@ -278,6 +288,14 @@ function makeCodeBlockEditable(codeBlock, language) {
     textarea.style.fontFamily = computedStyle.fontFamily;
     textarea.style.fontSize = computedStyle.fontSize;
     textarea.style.lineHeight = computedStyle.lineHeight;
+    
+    // 自动调整高度
+    autoResizeTextarea(textarea);
+    
+    // 监听输入，自动调整高度
+    textarea.addEventListener('input', function() {
+        autoResizeTextarea(this);
+    });
     
     // 替换 code 元素
     codeBlock.replaceWith(textarea);
