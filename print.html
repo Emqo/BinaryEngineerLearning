@@ -30,6 +30,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="theme/code-runner-d2a189f6.css">
+        <link rel="stylesheet" href="theme/exercises-7d7ed7af.css">
 
 
         <!-- Provide site root and default themes to javascript -->
@@ -559,65 +560,115 @@ int main() {
 <p>下一章我们将学习控制结构（if/else、循环），这是程序流程控制的基础。</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="第1章练习题"><a class="header" href="#第1章练习题">第1章练习题</a></h1>
-<h2 id="说明"><a class="header" href="#说明">说明</a></h2>
+<div class="exercise-intro">
+<h2 id="-练习说明"><a class="header" href="#-练习说明">📋 练习说明</a></h2>
 <ul>
-<li>每题都有难度标记：[简单] [中等] [困难]</li>
-<li>建议先独立完成，再查看参考答案</li>
-<li>所有代码都要能编译运行</li>
+<li>✅ <strong>难度标记</strong>：每题都有难度标记 🌟 [简单] 🌟🌟 [中等] 🌟🌟🌟 [困难]</li>
+<li>💡 <strong>学习建议</strong>：建议先独立完成，再查看参考答案</li>
+<li>🚀 <strong>代码要求</strong>：所有代码都要能编译运行</li>
+<li>💻 <strong>在线练习</strong>：可以直接在代码框中编辑和运行代码</li>
 </ul>
+</div>
+
 <hr>
-<h2 id="题目1基本输出-简单"><a class="header" href="#题目1基本输出-简单">题目1：基本输出 [简单]</a></h2>
+<h2 id="-题目1基本输出-简单"><a class="header" href="#-题目1基本输出-简单">🌟 题目1：基本输出 [简单]</a></h2>
+<div class="exercise-card">
+<p><strong>题目描述</strong>：</p>
 <p>编写一个程序，输出以下信息：</p>
 <pre><code>姓名：你的名字
 年龄：你的年龄
 专业：二进制工程
 </code></pre>
-<p><strong>要求</strong>：使用printf函数，格式美观。</p>
+<p><strong>要求</strong>：</p>
+<ul>
+<li>使用 <code>printf</code> 函数</li>
+<li>格式美观，每行一个信息</li>
+</ul>
+<p><strong>提示</strong>：使用 <code>\n</code> 实现换行。</p>
+</div>
+
 <hr>
-<h2 id="题目2数据类型和大小-简单"><a class="header" href="#题目2数据类型和大小-简单">题目2：数据类型和大小 [简单]</a></h2>
+<h2 id="-题目2数据类型和大小-简单"><a class="header" href="#-题目2数据类型和大小-简单">🌟 题目2：数据类型和大小 [简单]</a></h2>
+<div class="exercise-card">
+<p><strong>题目描述</strong>：</p>
 <p>编写程序，打印以下数据类型的大小（字节数）：</p>
 <ul>
-<li>char</li>
-<li>short</li>
-<li>int</li>
-<li>long</li>
-<li>float</li>
-<li>double</li>
+<li><code>char</code></li>
+<li><code>short</code></li>
+<li><code>int</code></li>
+<li><code>long</code></li>
+<li><code>float</code></li>
+<li><code>double</code></li>
 </ul>
-<p><strong>要求</strong>：使用sizeof运算符。</p>
+<p><strong>要求</strong>：</p>
+<ul>
+<li>使用 <code>sizeof</code> 运算符</li>
+<li>使用 <code>%zu</code> 格式化输出（<code>sizeof</code> 返回 <code>size_t</code> 类型）</li>
+</ul>
+<p><strong>提示</strong>：<code>sizeof</code> 是编译时运算符，返回类型或变量占用的字节数。</p>
+</div>
+
 <hr>
-<h2 id="题目3变量计算-简单"><a class="header" href="#题目3变量计算-简单">题目3：变量计算 [简单]</a></h2>
+<h2 id="-题目3变量计算-简单"><a class="header" href="#-题目3变量计算-简单">🌟 题目3：变量计算 [简单]</a></h2>
+<div class="exercise-card">
+<p><strong>题目描述</strong>：</p>
 <p>编写程序：</p>
 <ol>
-<li>声明三个整数变量：a = 15, b = 7, c = 3</li>
+<li>声明三个整数变量：<code>a = 15</code>, <code>b = 7</code>, <code>c = 3</code></li>
 <li>计算并输出：
 <ul>
-<li>a + b - c</li>
-<li>a * b / c</li>
-<li>a % b</li>
-<li>(a + b) * c</li>
+<li><code>a + b - c</code></li>
+<li><code>a * b / c</code></li>
+<li><code>a % b</code>（取余运算）</li>
+<li><code>(a + b) * c</code></li>
 </ul>
 </li>
 </ol>
-<hr>
-<h2 id="题目4位运算练习-中等"><a class="header" href="#题目4位运算练习-中等">题目4：位运算练习 [中等]</a></h2>
+<p><strong>要求</strong>：</p>
+<ul>
+<li>每个计算结果单独一行</li>
+<li>输出格式：<code>表达式 = 结果</code></li>
+</ul>
+<p><strong>提示</strong>：注意运算符优先级，<code>*</code> 和 <code>/</code> 优先级高于 <code>+</code> 和 <code>-</code>。</p>
+</div>
+
+<h2 id="-题目4位运算练习-中等"><a class="header" href="#-题目4位运算练习-中等">🌟🌟 题目4：位运算练习 [中等]</a></h2>
+<div class="exercise-card">
+<p><strong>题目描述</strong>：</p>
 <p>编写程序，完成以下位运算：</p>
 <ol>
-<li>定义两个无符号整数：a = 0b11001100, b = 0b11110000</li>
+<li>定义两个无符号整数：<code>a = 0b11001100</code>, <code>b = 0b11110000</code></li>
 <li>计算并输出（十六进制格式）：
 <ul>
-<li>a &amp; b（按位与）</li>
-<li>a | b（按位或）</li>
-<li>a ^ b（按位异或）</li>
-<li>~a（按位取反）</li>
-<li>a &lt;&lt; 2（左移2位）</li>
-<li>a &gt;&gt; 2（右移2位）</li>
+<li><code>a &amp; b</code>（按位与）</li>
+<li><code>a | b</code>（按位或）</li>
+<li><code>a ^ b</code>（按位异或）</li>
+<li><code>~a</code>（按位取反）</li>
+<li><code>a &lt;&lt; 2</code>（左移2位）</li>
+<li><code>a &gt;&gt; 2</code>（右移2位）</li>
 </ul>
 </li>
 </ol>
-<p><strong>提示</strong>：使用 <code>printf("0x%x\n", value)</code> 输出十六进制。</p>
+<p><strong>要求</strong>：</p>
+<ul>
+<li>使用 <code>unsigned int</code> 类型</li>
+<li>使用 <code>printf("0x%x\n", value)</code> 输出十六进制</li>
+<li>每个运算结果单独一行</li>
+</ul>
+<p><strong>提示</strong>：</p>
+<ul>
+<li>按位与 <code>&amp;</code>：两个位都为1时结果为1</li>
+<li>按位或 <code>|</code>：至少一个位为1时结果为1</li>
+<li>按位异或 <code>^</code>：两个位不同时结果为1</li>
+<li>左移 <code>&lt;&lt;</code>：相当于乘以2的n次方</li>
+<li>右移 <code>&gt;&gt;</code>：相当于除以2的n次方</li>
+</ul>
+</div>
+
 <hr>
-<h2 id="题目5输入输出-简单"><a class="header" href="#题目5输入输出-简单">题目5：输入输出 [简单]</a></h2>
+<h2 id="-题目5输入输出-简单"><a class="header" href="#-题目5输入输出-简单">🌟 题目5：输入输出 [简单]</a></h2>
+<div class="exercise-card">
+<p><strong>题目描述</strong>：</p>
 <p>编写一个程序：</p>
 <ol>
 <li>提示用户输入两个整数</li>
@@ -633,11 +684,26 @@ int main() {
 20 * 5 = 100
 20 / 5 = 4
 </code></pre>
+<p><strong>要求</strong>：</p>
+<ul>
+<li>使用 <code>scanf</code> 读取输入</li>
+<li>使用 <code>printf</code> 格式化输出</li>
+<li>注意整数除法的特点（结果也是整数）</li>
+</ul>
+<p><strong>提示</strong>：</p>
+<ul>
+<li><code>scanf("%d", &amp;变量名)</code> 读取整数</li>
+<li><code>&amp;</code> 符号是取地址运算符，必须使用</li>
+</ul>
+</div>
+
 <hr>
-<h2 id="题目6内存地址观察-中等"><a class="header" href="#题目6内存地址观察-中等">题目6：内存地址观察 [中等]</a></h2>
+<h2 id="-题目6内存地址观察-中等"><a class="header" href="#-题目6内存地址观察-中等">🌟🌟 题目6：内存地址观察 [中等]</a></h2>
+<div class="exercise-card">
+<p><strong>题目描述</strong>：</p>
 <p>编写程序：</p>
 <ol>
-<li>声明5个不同类型的变量（int, float, char, double, short）</li>
+<li>声明5个不同类型的变量（<code>int</code>, <code>float</code>, <code>char</code>, <code>double</code>, <code>short</code>）</li>
 <li>打印每个变量的：
 <ul>
 <li>变量名</li>
@@ -648,18 +714,48 @@ int main() {
 </li>
 <li>观察地址的规律</li>
 </ol>
-<p><strong>提示</strong>：使用 <code>%p</code> 打印地址，<code>sizeof</code> 获取大小。</p>
+<p><strong>要求</strong>：</p>
+<ul>
+<li>使用 <code>%p</code> 打印地址</li>
+<li>使用 <code>sizeof</code> 获取大小</li>
+<li>地址需要转换为 <code>void*</code> 类型：<code>(void*)&amp;变量名</code></li>
+</ul>
+<p><strong>提示</strong>：</p>
+<ul>
+<li>观察变量在内存中的排列顺序</li>
+<li>注意不同数据类型占用的字节数</li>
+<li>地址通常以十六进制显示</li>
+</ul>
+</div>
+
 <hr>
-<h2 id="题目7常量定义-简单"><a class="header" href="#题目7常量定义-简单">题目7：常量定义 [简单]</a></h2>
+<h2 id="-题目7常量定义-简单"><a class="header" href="#-题目7常量定义-简单">🌟 题目7：常量定义 [简单]</a></h2>
+<div class="exercise-card">
+<p><strong>题目描述</strong>：</p>
 <p>使用两种方式定义常量：</p>
 <ol>
-<li>使用 <code>#define</code> 定义：MAX_STUDENTS = 100, PI = 3.14159</li>
-<li>使用 <code>const</code> 定义：MIN_AGE = 18, GRAVITY = 9.8</li>
+<li>使用 <code>#define</code> 定义：<code>MAX_STUDENTS = 100</code>, <code>PI = 3.14159</code></li>
+<li>使用 <code>const</code> 定义：<code>MIN_AGE = 18</code>, <code>GRAVITY = 9.8</code></li>
 <li>在程序中输出这些常量</li>
 </ol>
-<hr>
-<h2 id="题目8格式化输出-中等"><a class="header" href="#题目8格式化输出-中等">题目8：格式化输出 [中等]</a></h2>
-<p>编写程序，使用printf实现以下格式化输出：</p>
+<p><strong>要求</strong>：</p>
+<ul>
+<li><code>#define</code> 放在文件开头（<code>#include</code> 之后）</li>
+<li><code>const</code> 变量在 <code>main</code> 函数中定义</li>
+<li>正确格式化输出（整数和浮点数）</li>
+</ul>
+<p><strong>提示</strong>：</p>
+<ul>
+<li><code>#define</code> 是预处理指令，在编译前替换</li>
+<li><code>const</code> 是类型修饰符，定义真正的常量变量</li>
+<li>注意浮点数常量的格式（<code>3.14159</code> vs <code>9.8f</code>）</li>
+</ul>
+</div>
+
+<h2 id="-题目8格式化输出-中等"><a class="header" href="#-题目8格式化输出-中等">🌟🌟 题目8：格式化输出 [中等]</a></h2>
+<div class="exercise-card">
+<p><strong>题目描述</strong>：</p>
+<p>编写程序，使用 <code>printf</code> 实现以下格式化输出：</p>
 <pre><code>数字: 42
 右对齐(10位):         42
 左对齐(10位): 42        
@@ -669,35 +765,70 @@ int main() {
 科学计数: 3.141590e+00
 十六进制: 0x2a
 </code></pre>
-<hr>
-<h2 id="题目9位标志操作-困难"><a class="header" href="#题目9位标志操作-困难">题目9：位标志操作 [困难]</a></h2>
+<p><strong>要求</strong>：</p>
+<ul>
+<li>使用格式化字符串实现对齐</li>
+<li>使用 <code>%d</code>、<code>%f</code>、<code>%e</code>、<code>%x</code> 等格式符</li>
+<li>精确控制输出格式</li>
+</ul>
+<p><strong>提示</strong>：</p>
+<ul>
+<li><code>%10d</code>：右对齐，宽度10</li>
+<li><code>%-10d</code>：左对齐，宽度10</li>
+<li><code>%05d</code>：前导零，宽度5</li>
+<li><code>%.2f</code>：保留2位小数</li>
+<li><code>%e</code>：科学计数法</li>
+<li><code>0x%x</code>：十六进制（需要手动添加 <code>0x</code> 前缀）</li>
+</ul>
+</div>
+
+<h2 id="-题目9位标志操作-困难"><a class="header" href="#-题目9位标志操作-困难">🌟🌟🌟 题目9：位标志操作 [困难]</a></h2>
+<div class="exercise-card">
+<p><strong>题目描述</strong>：</p>
 <p>实现一个简单的标志系统：</p>
 <ol>
 <li>定义三个标志位：
 <ul>
-<li>FLAG_READ = 0x01 (二进制: 00000001)</li>
-<li>FLAG_WRITE = 0x02 (二进制: 00000010)</li>
-<li>FLAG_EXECUTE = 0x04 (二进制: 00000100)</li>
+<li><code>FLAG_READ = 0x01</code> (二进制: <code>00000001</code>)</li>
+<li><code>FLAG_WRITE = 0x02</code> (二进制: <code>00000010</code>)</li>
+<li><code>FLAG_EXECUTE = 0x04</code> (二进制: <code>00000100</code>)</li>
 </ul>
 </li>
-<li>创建一个变量flags，初始为0</li>
+<li>创建一个变量 <code>flags</code>，初始为 <code>0</code></li>
 <li>实现以下操作：
 <ul>
-<li>设置READ标志</li>
-<li>设置WRITE标志</li>
-<li>检查是否有READ权限</li>
-<li>清除WRITE标志</li>
-<li>切换EXECUTE标志</li>
+<li>设置 READ 标志</li>
+<li>设置 WRITE 标志</li>
+<li>检查是否有 READ 权限</li>
+<li>清除 WRITE 标志</li>
+<li>切换 EXECUTE 标志</li>
 </ul>
 </li>
-<li>每次操作后打印flags的值（二进制和十六进制）</li>
+<li>每次操作后打印 <code>flags</code> 的值（二进制和十六进制）</li>
 </ol>
-<p><strong>提示</strong>：使用位运算符 <code>|</code>, <code>&amp;</code>, <code>^</code>, <code>~</code></p>
+<p><strong>要求</strong>：</p>
+<ul>
+<li>使用 <code>#define</code> 定义标志位</li>
+<li>实现二进制打印函数（可选，也可以手动计算）</li>
+<li>每个操作后输出当前状态</li>
+</ul>
+<p><strong>提示</strong>：</p>
+<ul>
+<li>设置标志：<code>flags |= FLAG_READ</code></li>
+<li>检查标志：<code>if (flags &amp; FLAG_READ)</code></li>
+<li>清除标志：<code>flags &amp;= ~FLAG_WRITE</code></li>
+<li>切换标志：<code>flags ^= FLAG_EXECUTE</code></li>
+<li>二进制打印：使用位运算逐位检查</li>
+</ul>
+</div>
+
 <hr>
-<h2 id="题目10综合练习-困难"><a class="header" href="#题目10综合练习-困难">题目10：综合练习 [困难]</a></h2>
+<h2 id="-题目10综合练习-困难"><a class="header" href="#-题目10综合练习-困难">🌟🌟🌟 题目10：综合练习 [困难]</a></h2>
+<div class="exercise-card">
+<p><strong>题目描述</strong>：</p>
 <p>编写一个“学生信息管理系统“的简单版本：</p>
 <ol>
-<li>使用常量定义：MAX_NAME_LEN = 50</li>
+<li>使用常量定义：<code>MAX_NAME_LEN = 50</code></li>
 <li>提示用户输入：
 <ul>
 <li>学生姓名（字符串）</li>
@@ -719,11 +850,29 @@ int main() {
 </ul>
 </li>
 </ol>
+<p><strong>要求</strong>：</p>
+<ul>
+<li>使用 <code>char</code> 数组存储姓名</li>
+<li>使用 <code>scanf</code> 读取输入</li>
+<li>实现二进制转换函数</li>
+<li>格式化输出要美观</li>
+</ul>
+<p><strong>提示</strong>：</p>
+<ul>
+<li><code>char name[MAX_NAME_LEN];</code> 定义字符串数组</li>
+<li><code>scanf("%s", name)</code> 读取字符串（不需要 <code>&amp;</code>）</li>
+<li>浮点数转整数：<code>(int)score</code></li>
+<li>二进制转换：使用循环和取余运算</li>
+</ul>
+</div>
+
 <hr>
-<h2 id="参考答案"><a class="header" href="#参考答案">参考答案</a></h2>
+<h2 id="-参考答案"><a class="header" href="#-参考答案">📚 参考答案</a></h2>
+<div class="answer-section">
 <details>
-<summary>点击展开参考答案</summary>
-<h3 id="题目1参考答案"><a class="header" href="#题目1参考答案">题目1参考答案</a></h3>
+<summary><strong>📖 点击展开参考答案</strong></summary>
+<div class="answer-content">
+<h3 id="-题目1参考答案"><a class="header" href="#-题目1参考答案">🌟 题目1参考答案</a></h3>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main() {
@@ -733,7 +882,8 @@ int main() {
     return 0;
 }
 </code></pre>
-<h3 id="题目2参考答案"><a class="header" href="#题目2参考答案">题目2参考答案</a></h3>
+<hr>
+<h3 id="-题目2参考答案"><a class="header" href="#-题目2参考答案">🌟 题目2参考答案</a></h3>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main() {
@@ -746,7 +896,7 @@ int main() {
     return 0;
 }
 </code></pre>
-<h3 id="题目3参考答案"><a class="header" href="#题目3参考答案">题目3参考答案</a></h3>
+<h3 id="-题目3参考答案"><a class="header" href="#-题目3参考答案">🌟 题目3参考答案</a></h3>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main() {
@@ -760,7 +910,8 @@ int main() {
     return 0;
 }
 </code></pre>
-<h3 id="题目4参考答案"><a class="header" href="#题目4参考答案">题目4参考答案</a></h3>
+<hr>
+<h3 id="-题目4参考答案"><a class="header" href="#-题目4参考答案">🌟🌟 题目4参考答案</a></h3>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main() {
@@ -779,7 +930,7 @@ int main() {
     return 0;
 }
 </code></pre>
-<h3 id="题目5参考答案"><a class="header" href="#题目5参考答案">题目5参考答案</a></h3>
+<h3 id="-题目5参考答案"><a class="header" href="#-题目5参考答案">🌟 题目5参考答案</a></h3>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main() {
@@ -799,7 +950,8 @@ int main() {
     return 0;
 }
 </code></pre>
-<h3 id="题目6参考答案"><a class="header" href="#题目6参考答案">题目6参考答案</a></h3>
+<hr>
+<h3 id="-题目6参考答案"><a class="header" href="#-题目6参考答案">🌟🌟 题目6参考答案</a></h3>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main() {
@@ -818,7 +970,7 @@ int main() {
     return 0;
 }
 </code></pre>
-<h3 id="题目7参考答案"><a class="header" href="#题目7参考答案">题目7参考答案</a></h3>
+<h3 id="-题目7参考答案"><a class="header" href="#-题目7参考答案">🌟 题目7参考答案</a></h3>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 
 #define MAX_STUDENTS 100
@@ -836,7 +988,8 @@ int main() {
     return 0;
 }
 </code></pre>
-<h3 id="题目8参考答案"><a class="header" href="#题目8参考答案">题目8参考答案</a></h3>
+<hr>
+<h3 id="-题目8参考答案"><a class="header" href="#-题目8参考答案">🌟🌟 题目8参考答案</a></h3>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main() {
@@ -855,7 +1008,7 @@ int main() {
     return 0;
 }
 </code></pre>
-<h3 id="题目9参考答案"><a class="header" href="#题目9参考答案">题目9参考答案</a></h3>
+<h3 id="-题目9参考答案"><a class="header" href="#-题目9参考答案">🌟🌟🌟 题目9参考答案</a></h3>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 
 #define FLAG_READ    0x01  // 00000001
@@ -907,7 +1060,8 @@ int main() {
     return 0;
 }
 </code></pre>
-<h3 id="题目10参考答案"><a class="header" href="#题目10参考答案">题目10参考答案</a></h3>
+<hr>
+<h3 id="-题目10参考答案"><a class="header" href="#-题目10参考答案">🌟🌟🌟 题目10参考答案</a></h3>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 
 #define MAX_NAME_LEN 50
@@ -959,17 +1113,24 @@ int main() {
     return 0;
 }
 </code></pre>
+</div>
+
 </details>
+</div>
+
 <hr>
-<h2 id="提交要求"><a class="header" href="#提交要求">提交要求</a></h2>
+<h2 id="-提交要求"><a class="header" href="#-提交要求">✅ 提交要求</a></h2>
+<div class="submit-requirements">
 <p>完成练习后，请：</p>
 <ol>
-<li>确保所有代码都能编译运行</li>
-<li>测试边界情况（如除零、溢出等）</li>
-<li>思考每道题目的实际应用场景</li>
-<li>记录遇到的问题和解决方法</li>
+<li>✅ <strong>代码检查</strong>：确保所有代码都能编译运行</li>
+<li>🧪 <strong>测试验证</strong>：测试边界情况（如除零、溢出等）</li>
+<li>💡 <strong>思考总结</strong>：思考每道题目的实际应用场景</li>
+<li>📝 <strong>记录问题</strong>：记录遇到的问题和解决方法</li>
 </ol>
-<p><strong>下一章</strong>：完成本章练习后，继续学习第2章《控制结构》。</p>
+<p><strong>🎯 下一步</strong>：完成本章练习后，告诉AI“我学完了“或“我完成练习了“，AI会检查你的理解程度，然后继续学习第2章《控制结构》。</p>
+</div>
+
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="binaryengineerlearning"><a class="header" href="#binaryengineerlearning">BinaryEngineerLearning</a></h1>
 <blockquote>

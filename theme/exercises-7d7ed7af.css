@@ -1,0 +1,185 @@
+/**
+ * 练习题样式优化
+ */
+
+/* 练习说明区域 */
+.exercise-intro {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(33, 150, 243, 0.1) 100%);
+    border-left: 4px solid #4CAF50;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.exercise-intro h2 {
+    margin-top: 0;
+    color: var(--code-runner-text);
+}
+
+.exercise-intro ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.exercise-intro li {
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+/* 题目卡片 */
+.exercise-card {
+    background-color: var(--code-runner-bg);
+    border: 2px solid var(--code-runner-border);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.exercise-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.exercise-card strong {
+    color: var(--code-runner-text);
+    font-size: 15px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.exercise-card ul,
+.exercise-card ol {
+    margin: 10px 0;
+    padding-left: 25px;
+}
+
+.exercise-card li {
+    margin: 6px 0;
+    line-height: 1.6;
+}
+
+.exercise-card code {
+    background-color: var(--code-runner-pre-bg);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 13px;
+    color: #4CAF50;
+    border: 1px solid var(--code-runner-border);
+}
+
+/* 题目标题样式 */
+h2 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--code-runner-border);
+}
+
+/* 参考答案区域 */
+.answer-section {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 3px solid var(--code-runner-border);
+}
+
+.answer-content {
+    margin-top: 15px;
+}
+
+.answer-content details {
+    background-color: var(--code-runner-bg);
+    border: 2px solid var(--code-runner-border);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 15px 0;
+}
+
+.answer-content summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--code-runner-text);
+    padding: 10px;
+    background-color: rgba(76, 175, 80, 0.1);
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+.answer-content summary:hover {
+    background-color: rgba(76, 175, 80, 0.2);
+}
+
+.answer-content h3 {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    color: var(--code-runner-text);
+    font-size: 18px;
+}
+
+.answer-content h3:first-child {
+    margin-top: 0;
+}
+
+/* 提交要求区域 */
+.submit-requirements {
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.1) 0%, rgba(156, 39, 176, 0.1) 100%);
+    border-left: 4px solid #2196F3;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 30px 0;
+}
+
+.submit-requirements ol {
+    margin: 15px 0;
+    padding-left: 25px;
+}
+
+.submit-requirements li {
+    margin: 10px 0;
+    line-height: 1.8;
+}
+
+.submit-requirements strong {
+    color: var(--code-runner-text);
+    font-size: 16px;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* 难度标记样式 */
+h2:has-text("🌟") {
+    position: relative;
+}
+
+/* 代码块在题目中的样式 */
+.exercise-card pre {
+    background-color: var(--code-runner-pre-bg);
+    border: 1px solid var(--code-runner-border);
+    border-radius: 6px;
+    padding: 15px;
+    margin: 15px 0;
+    overflow-x: auto;
+}
+
+.exercise-card pre code {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: var(--code-runner-text);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .exercise-card {
+        padding: 15px;
+    }
+    
+    .exercise-intro,
+    .submit-requirements {
+        padding: 15px;
+    }
+}
+
