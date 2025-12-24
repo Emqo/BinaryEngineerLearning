@@ -77,49 +77,49 @@ h2 {
     border-bottom: 2px solid var(--code-runner-border);
 }
 
-/* 参考答案区域 */
-.answer-section {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 3px solid var(--code-runner-border);
-}
-
-.answer-content {
-    margin-top: 15px;
-}
-
-.answer-content details {
-    background-color: var(--code-runner-bg);
-    border: 2px solid var(--code-runner-border);
-    border-radius: 8px;
-    padding: 20px;
-    margin: 15px 0;
-}
-
-.answer-content summary {
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 16px;
-    color: var(--code-runner-text);
-    padding: 10px;
-    background-color: rgba(76, 175, 80, 0.1);
-    border-radius: 6px;
-    transition: background-color 0.3s;
-}
-
-.answer-content summary:hover {
-    background-color: rgba(76, 175, 80, 0.2);
-}
-
-.answer-content h3 {
+/* 参考答案区域（现在每个题目下面都有） */
+.exercise-answer {
     margin-top: 20px;
-    margin-bottom: 15px;
-    color: var(--code-runner-text);
-    font-size: 18px;
+    padding: 20px;
+    background-color: var(--code-runner-bg);
+    border: 2px solid #4CAF50;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
 }
 
-.answer-content h3:first-child {
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.exercise-answer h3 {
     margin-top: 0;
+    color: #4CAF50;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.exercise-answer pre {
+    margin: 15px 0 0 0;
+    padding: 16px;
+    background-color: var(--code-runner-pre-bg);
+    border: 1px solid var(--code-runner-pre-border);
+    border-radius: 6px;
+    overflow-x: auto;
+}
+
+.exercise-answer code {
+    font-family: var(--font-mono, 'Consolas', 'Monaco', 'Courier New', monospace);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--code-runner-text);
 }
 
 /* 提交要求区域 */

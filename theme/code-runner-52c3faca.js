@@ -372,6 +372,31 @@ function initCodeRunner() {
 
         buttonContainer.appendChild(runButton);
 
+        // 检查是否是练习题页面，如果是则添加"显示参考答案"按钮
+        const exerciseCard = textarea.closest('.exercise-card');
+        if (exerciseCard) {
+            // 找到对应的参考答案（通过查找最近的 exercise-card 中的 exercise-answer）
+            const exerciseAnswer = exerciseCard.querySelector('.exercise-answer');
+            if (exerciseAnswer) {
+                const answerButton = document.createElement('button');
+                answerButton.className = 'show-answer-btn';
+                answerButton.textContent = '📖 显示参考答案';
+                answerButton.onclick = function() {
+                    const isHidden = exerciseAnswer.style.display === 'none';
+                    if (isHidden) {
+                        exerciseAnswer.style.display = 'block';
+                        answerButton.textContent = '🙈 隐藏参考答案';
+                        // 平滑滚动到参考答案位置
+                        exerciseAnswer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    } else {
+                        exerciseAnswer.style.display = 'none';
+                        answerButton.textContent = '📖 显示参考答案';
+                    }
+                };
+                buttonContainer.appendChild(answerButton);
+            }
+        }
+
         // 插入到代码块后面
         textarea.parentElement.appendChild(buttonContainer);
     });

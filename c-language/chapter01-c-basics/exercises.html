@@ -29,7 +29,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/code-runner-d2a189f6.css">
-        <link rel="stylesheet" href="../../theme/exercises-7d7ed7af.css">
+        <link rel="stylesheet" href="../../theme/exercises-c9a0b4c4.css">
 
 
         <!-- Provide site root and default themes to javascript -->
@@ -188,6 +188,21 @@
 <li>格式美观，每行一个信息</li>
 </ul>
 <p><strong>提示</strong>：使用 <code>\n</code> 实现换行。</p>
+<!-- 参考答案开始 -->
+<div class="exercise-answer" data-exercise="1" style="display: none;">
+<h3 id="-参考答案"><a class="header" href="#-参考答案">📖 参考答案</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    printf("姓名：张三\n");
+    printf("年龄：20\n");
+    printf("专业：二进制工程\n");
+    return 0;
+}
+</code></pre>
+</div>
+
+<!-- 参考答案结束 -->
 </div>
 
 <hr>
@@ -209,6 +224,24 @@
 <li>使用 <code>%zu</code> 格式化输出（<code>sizeof</code> 返回 <code>size_t</code> 类型）</li>
 </ul>
 <p><strong>提示</strong>：<code>sizeof</code> 是编译时运算符，返回类型或变量占用的字节数。</p>
+<!-- 参考答案开始 -->
+<div class="exercise-answer" data-exercise="2" style="display: none;">
+<h3 id="-参考答案-1"><a class="header" href="#-参考答案-1">📖 参考答案</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    printf("char大小: %zu 字节\n", sizeof(char));
+    printf("short大小: %zu 字节\n", sizeof(short));
+    printf("int大小: %zu 字节\n", sizeof(int));
+    printf("long大小: %zu 字节\n", sizeof(long));
+    printf("float大小: %zu 字节\n", sizeof(float));
+    printf("double大小: %zu 字节\n", sizeof(double));
+    return 0;
+}
+</code></pre>
+</div>
+
+<!-- 参考答案结束 -->
 </div>
 
 <hr>
@@ -233,6 +266,25 @@
 <li>输出格式：<code>表达式 = 结果</code></li>
 </ul>
 <p><strong>提示</strong>：注意运算符优先级，<code>*</code> 和 <code>/</code> 优先级高于 <code>+</code> 和 <code>-</code>。</p>
+<!-- 参考答案开始 -->
+<div class="exercise-answer" data-exercise="3" style="display: none;">
+<h3 id="-参考答案-2"><a class="header" href="#-参考答案-2">📖 参考答案</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 15, b = 7, c = 3;
+    
+    printf("a + b - c = %d\n", a + b - c);
+    printf("a * b / c = %d\n", a * b / c);
+    printf("a %% b = %d\n", a % b);
+    printf("(a + b) * c = %d\n", (a + b) * c);
+    
+    return 0;
+}
+</code></pre>
+</div>
+
+<!-- 参考答案结束 -->
 </div>
 
 <h2 id="-题目4位运算练习-中等"><a class="header" href="#-题目4位运算练习-中等">🌟🌟 题目4：位运算练习 [中等]</a></h2>
@@ -266,6 +318,30 @@
 <li>左移 <code>&lt;&lt;</code>：相当于乘以2的n次方</li>
 <li>右移 <code>&gt;&gt;</code>：相当于除以2的n次方</li>
 </ul>
+<!-- 参考答案开始 -->
+<div class="exercise-answer" data-exercise="4" style="display: none;">
+<h3 id="-参考答案-3"><a class="header" href="#-参考答案-3">📖 参考答案</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    unsigned int a = 0b11001100;  // 0xCC
+    unsigned int b = 0b11110000;  // 0xF0
+    
+    printf("a = 0x%x\n", a);
+    printf("b = 0x%x\n", b);
+    printf("a &amp; b = 0x%x\n", a &amp; b);
+    printf("a | b = 0x%x\n", a | b);
+    printf("a ^ b = 0x%x\n", a ^ b);
+    printf("~a = 0x%x\n", ~a);
+    printf("a &lt;&lt; 2 = 0x%x\n", a &lt;&lt; 2);
+    printf("a &gt;&gt; 2 = 0x%x\n", a &gt;&gt; 2);
+    
+    return 0;
+}
+</code></pre>
+</div>
+
+<!-- 参考答案结束 -->
 </div>
 
 <hr>
@@ -298,6 +374,31 @@
 <li><code>scanf("%d", &amp;变量名)</code> 读取整数</li>
 <li><code>&amp;</code> 符号是取地址运算符，必须使用</li>
 </ul>
+<!-- 参考答案开始 -->
+<div class="exercise-answer" data-exercise="5" style="display: none;">
+<h3 id="-参考答案-4"><a class="header" href="#-参考答案-4">📖 参考答案</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int a, b;
+    
+    printf("请输入第一个整数: ");
+    scanf("%d", &amp;a);
+    
+    printf("请输入第二个整数: ");
+    scanf("%d", &amp;b);
+    
+    printf("%d + %d = %d\n", a, b, a + b);
+    printf("%d - %d = %d\n", a, b, a - b);
+    printf("%d * %d = %d\n", a, b, a * b);
+    printf("%d / %d = %d\n", a, b, a / b);
+    
+    return 0;
+}
+</code></pre>
+</div>
+
+<!-- 参考答案结束 -->
 </div>
 
 <hr>
@@ -329,6 +430,30 @@
 <li>注意不同数据类型占用的字节数</li>
 <li>地址通常以十六进制显示</li>
 </ul>
+<!-- 参考答案开始 -->
+<div class="exercise-answer" data-exercise="6" style="display: none;">
+<h3 id="-参考答案-5"><a class="header" href="#-参考答案-5">📖 参考答案</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 10;
+    float b = 3.14f;
+    char c = 'A';
+    double d = 2.71828;
+    short e = 100;
+    
+    printf("变量a: 值=%d, 地址=%p, 大小=%zu字节\n", a, (void*)&amp;a, sizeof(a));
+    printf("变量b: 值=%.2f, 地址=%p, 大小=%zu字节\n", b, (void*)&amp;b, sizeof(b));
+    printf("变量c: 值=%c, 地址=%p, 大小=%zu字节\n", c, (void*)&amp;c, sizeof(c));
+    printf("变量d: 值=%.5f, 地址=%p, 大小=%zu字节\n", d, (void*)&amp;d, sizeof(d));
+    printf("变量e: 值=%d, 地址=%p, 大小=%zu字节\n", e, (void*)&amp;e, sizeof(e));
+    
+    return 0;
+}
+</code></pre>
+</div>
+
+<!-- 参考答案结束 -->
 </div>
 
 <hr>
@@ -353,6 +478,29 @@
 <li><code>const</code> 是类型修饰符，定义真正的常量变量</li>
 <li>注意浮点数常量的格式（<code>3.14159</code> vs <code>9.8f</code>）</li>
 </ul>
+<!-- 参考答案开始 -->
+<div class="exercise-answer" data-exercise="7" style="display: none;">
+<h3 id="-参考答案-6"><a class="header" href="#-参考答案-6">📖 参考答案</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+#define MAX_STUDENTS 100
+#define PI 3.14159
+
+int main() {
+    const int MIN_AGE = 18;
+    const float GRAVITY = 9.8f;
+    
+    printf("MAX_STUDENTS = %d\n", MAX_STUDENTS);
+    printf("PI = %.5f\n", PI);
+    printf("MIN_AGE = %d\n", MIN_AGE);
+    printf("GRAVITY = %.1f\n", GRAVITY);
+    
+    return 0;
+}
+</code></pre>
+</div>
+
+<!-- 参考答案结束 -->
 </div>
 
 <h2 id="-题目8格式化输出-中等"><a class="header" href="#-题目8格式化输出-中等">🌟🌟 题目8：格式化输出 [中等]</a></h2>
@@ -383,6 +531,30 @@
 <li><code>%e</code>：科学计数法</li>
 <li><code>0x%x</code>：十六进制（需要手动添加 <code>0x</code> 前缀）</li>
 </ul>
+<!-- 参考答案开始 -->
+<div class="exercise-answer" data-exercise="8" style="display: none;">
+<h3 id="-参考答案-7"><a class="header" href="#-参考答案-7">📖 参考答案</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int num = 42;
+    float pi = 3.14159f;
+    
+    printf("数字: %d\n", num);
+    printf("右对齐(10位): %10d\n", num);
+    printf("左对齐(10位): %-10d\n", num);
+    printf("前导零(5位): %05d\n", num);
+    printf("浮点数: %.5f\n", pi);
+    printf("保留2位: %.2f\n", pi);
+    printf("科学计数: %e\n", pi);
+    printf("十六进制: 0x%x\n", num);
+    
+    return 0;
+}
+</code></pre>
+</div>
+
+<!-- 参考答案结束 -->
 </div>
 
 <h2 id="-题目9位标志操作-困难"><a class="header" href="#-题目9位标志操作-困难">🌟🌟🌟 题目9：位标志操作 [困难]</a></h2>
@@ -423,195 +595,9 @@
 <li>切换标志：<code>flags ^= FLAG_EXECUTE</code></li>
 <li>二进制打印：使用位运算逐位检查</li>
 </ul>
-</div>
-
-<hr>
-<h2 id="-题目10综合练习-困难"><a class="header" href="#-题目10综合练习-困难">🌟🌟🌟 题目10：综合练习 [困难]</a></h2>
-<div class="exercise-card">
-<p><strong>题目描述</strong>：</p>
-<p>编写一个“学生信息管理系统“的简单版本：</p>
-<ol>
-<li>使用常量定义：<code>MAX_NAME_LEN = 50</code></li>
-<li>提示用户输入：
-<ul>
-<li>学生姓名（字符串）</li>
-<li>年龄（整数）</li>
-<li>成绩（浮点数）</li>
-</ul>
-</li>
-<li>格式化输出学生信息，包括：
-<ul>
-<li>姓名（左对齐，20字符宽度）</li>
-<li>年龄（右对齐，5字符宽度）</li>
-<li>成绩（保留2位小数）</li>
-</ul>
-</li>
-<li>计算并输出：
-<ul>
-<li>成绩的十六进制表示（将浮点数转换为整数后）</li>
-<li>年龄的二进制表示（自己实现转换）</li>
-</ul>
-</li>
-</ol>
-<p><strong>要求</strong>：</p>
-<ul>
-<li>使用 <code>char</code> 数组存储姓名</li>
-<li>使用 <code>scanf</code> 读取输入</li>
-<li>实现二进制转换函数</li>
-<li>格式化输出要美观</li>
-</ul>
-<p><strong>提示</strong>：</p>
-<ul>
-<li><code>char name[MAX_NAME_LEN];</code> 定义字符串数组</li>
-<li><code>scanf("%s", name)</code> 读取字符串（不需要 <code>&amp;</code>）</li>
-<li>浮点数转整数：<code>(int)score</code></li>
-<li>二进制转换：使用循环和取余运算</li>
-</ul>
-</div>
-
-<hr>
-<h2 id="-参考答案"><a class="header" href="#-参考答案">📚 参考答案</a></h2>
-<div class="answer-section">
-<details>
-<summary><strong>📖 点击展开参考答案</strong></summary>
-<div class="answer-content">
-<h3 id="-题目1参考答案"><a class="header" href="#-题目1参考答案">🌟 题目1参考答案</a></h3>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
-
-int main() {
-    printf("姓名：张三\n");
-    printf("年龄：20\n");
-    printf("专业：二进制工程\n");
-    return 0;
-}
-</code></pre>
-<hr>
-<h3 id="-题目2参考答案"><a class="header" href="#-题目2参考答案">🌟 题目2参考答案</a></h3>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
-
-int main() {
-    printf("char大小: %zu 字节\n", sizeof(char));
-    printf("short大小: %zu 字节\n", sizeof(short));
-    printf("int大小: %zu 字节\n", sizeof(int));
-    printf("long大小: %zu 字节\n", sizeof(long));
-    printf("float大小: %zu 字节\n", sizeof(float));
-    printf("double大小: %zu 字节\n", sizeof(double));
-    return 0;
-}
-</code></pre>
-<h3 id="-题目3参考答案"><a class="header" href="#-题目3参考答案">🌟 题目3参考答案</a></h3>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
-
-int main() {
-    int a = 15, b = 7, c = 3;
-    
-    printf("a + b - c = %d\n", a + b - c);
-    printf("a * b / c = %d\n", a * b / c);
-    printf("a %% b = %d\n", a % b);
-    printf("(a + b) * c = %d\n", (a + b) * c);
-    
-    return 0;
-}
-</code></pre>
-<hr>
-<h3 id="-题目4参考答案"><a class="header" href="#-题目4参考答案">🌟🌟 题目4参考答案</a></h3>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
-
-int main() {
-    unsigned int a = 0b11001100;  // 0xCC
-    unsigned int b = 0b11110000;  // 0xF0
-    
-    printf("a = 0x%x\n", a);
-    printf("b = 0x%x\n", b);
-    printf("a &amp; b = 0x%x\n", a &amp; b);
-    printf("a | b = 0x%x\n", a | b);
-    printf("a ^ b = 0x%x\n", a ^ b);
-    printf("~a = 0x%x\n", ~a);
-    printf("a &lt;&lt; 2 = 0x%x\n", a &lt;&lt; 2);
-    printf("a &gt;&gt; 2 = 0x%x\n", a &gt;&gt; 2);
-    
-    return 0;
-}
-</code></pre>
-<h3 id="-题目5参考答案"><a class="header" href="#-题目5参考答案">🌟 题目5参考答案</a></h3>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
-
-int main() {
-    int a, b;
-    
-    printf("请输入第一个整数: ");
-    scanf("%d", &amp;a);
-    
-    printf("请输入第二个整数: ");
-    scanf("%d", &amp;b);
-    
-    printf("%d + %d = %d\n", a, b, a + b);
-    printf("%d - %d = %d\n", a, b, a - b);
-    printf("%d * %d = %d\n", a, b, a * b);
-    printf("%d / %d = %d\n", a, b, a / b);
-    
-    return 0;
-}
-</code></pre>
-<hr>
-<h3 id="-题目6参考答案"><a class="header" href="#-题目6参考答案">🌟🌟 题目6参考答案</a></h3>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
-
-int main() {
-    int a = 10;
-    float b = 3.14f;
-    char c = 'A';
-    double d = 2.71828;
-    short e = 100;
-    
-    printf("变量a: 值=%d, 地址=%p, 大小=%zu字节\n", a, (void*)&amp;a, sizeof(a));
-    printf("变量b: 值=%.2f, 地址=%p, 大小=%zu字节\n", b, (void*)&amp;b, sizeof(b));
-    printf("变量c: 值=%c, 地址=%p, 大小=%zu字节\n", c, (void*)&amp;c, sizeof(c));
-    printf("变量d: 值=%.5f, 地址=%p, 大小=%zu字节\n", d, (void*)&amp;d, sizeof(d));
-    printf("变量e: 值=%d, 地址=%p, 大小=%zu字节\n", e, (void*)&amp;e, sizeof(e));
-    
-    return 0;
-}
-</code></pre>
-<h3 id="-题目7参考答案"><a class="header" href="#-题目7参考答案">🌟 题目7参考答案</a></h3>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
-
-#define MAX_STUDENTS 100
-#define PI 3.14159
-
-int main() {
-    const int MIN_AGE = 18;
-    const float GRAVITY = 9.8f;
-    
-    printf("MAX_STUDENTS = %d\n", MAX_STUDENTS);
-    printf("PI = %.5f\n", PI);
-    printf("MIN_AGE = %d\n", MIN_AGE);
-    printf("GRAVITY = %.1f\n", GRAVITY);
-    
-    return 0;
-}
-</code></pre>
-<hr>
-<h3 id="-题目8参考答案"><a class="header" href="#-题目8参考答案">🌟🌟 题目8参考答案</a></h3>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
-
-int main() {
-    int num = 42;
-    float pi = 3.14159f;
-    
-    printf("数字: %d\n", num);
-    printf("右对齐(10位): %10d\n", num);
-    printf("左对齐(10位): %-10d\n", num);
-    printf("前导零(5位): %05d\n", num);
-    printf("浮点数: %.5f\n", pi);
-    printf("保留2位: %.2f\n", pi);
-    printf("科学计数: %e\n", pi);
-    printf("十六进制: 0x%x\n", num);
-    
-    return 0;
-}
-</code></pre>
-<h3 id="-题目9参考答案"><a class="header" href="#-题目9参考答案">🌟🌟🌟 题目9参考答案</a></h3>
+<!-- 参考答案开始 -->
+<div class="exercise-answer" data-exercise="9" style="display: none;">
+<h3 id="-参考答案-8"><a class="header" href="#-参考答案-8">📖 参考答案</a></h3>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 
 #define FLAG_READ    0x01  // 00000001
@@ -663,8 +649,56 @@ int main() {
     return 0;
 }
 </code></pre>
+</div>
+
+<!-- 参考答案结束 -->
+</div>
+
 <hr>
-<h3 id="-题目10参考答案"><a class="header" href="#-题目10参考答案">🌟🌟🌟 题目10参考答案</a></h3>
+<h2 id="-题目10综合练习-困难"><a class="header" href="#-题目10综合练习-困难">🌟🌟🌟 题目10：综合练习 [困难]</a></h2>
+<div class="exercise-card">
+<p><strong>题目描述</strong>：</p>
+<p>编写一个“学生信息管理系统“的简单版本：</p>
+<ol>
+<li>使用常量定义：<code>MAX_NAME_LEN = 50</code></li>
+<li>提示用户输入：
+<ul>
+<li>学生姓名（字符串）</li>
+<li>年龄（整数）</li>
+<li>成绩（浮点数）</li>
+</ul>
+</li>
+<li>格式化输出学生信息，包括：
+<ul>
+<li>姓名（左对齐，20字符宽度）</li>
+<li>年龄（右对齐，5字符宽度）</li>
+<li>成绩（保留2位小数）</li>
+</ul>
+</li>
+<li>计算并输出：
+<ul>
+<li>成绩的十六进制表示（将浮点数转换为整数后）</li>
+<li>年龄的二进制表示（自己实现转换）</li>
+</ul>
+</li>
+</ol>
+<p><strong>要求</strong>：</p>
+<ul>
+<li>使用 <code>char</code> 数组存储姓名</li>
+<li>使用 <code>scanf</code> 读取输入</li>
+<li>实现二进制转换函数</li>
+<li>格式化输出要美观</li>
+</ul>
+<p><strong>提示</strong>：</p>
+<ul>
+<li><code>char name[MAX_NAME_LEN];</code> 定义字符串数组</li>
+<li><code>scanf("%s", name)</code> 读取字符串（不需要 <code>&amp;</code>）</li>
+<li>浮点数转整数：<code>(int)score</code></li>
+<li>二进制转换：使用循环和取余运算</li>
+</ul>
+<!-- 参考答案开始 -->
+<div class="exercise-answer" data-exercise="10" style="display: none;">
+<h3 id="-参考答案-9"><a class="header" href="#-参考答案-9">📖 参考答案</a></h3>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 
 #define MAX_NAME_LEN 50
@@ -718,7 +752,7 @@ int main() {
 </code></pre>
 </div>
 
-</details>
+<!-- 参考答案结束 -->
 </div>
 
 <hr>
@@ -783,7 +817,7 @@ int main() {
         <script src="../../book-a0b12cfe.js"></script>
 
         <!-- Custom JS scripts -->
-        <script src="../../theme/code-runner-7ee07aa5.js"></script>
+        <script src="../../theme/code-runner-52c3faca.js"></script>
 
 
 
