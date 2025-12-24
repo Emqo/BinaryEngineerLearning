@@ -1,0 +1,161 @@
+/**
+ * 全局字体大小优化
+ * 增大所有文字以提高可读性
+ */
+
+/* 全局基础字体大小 */
+body {
+    font-size: 16px !important;
+    line-height: 1.7 !important;
+}
+
+/* 正文段落 */
+p {
+    font-size: 16px !important;
+    line-height: 1.8 !important;
+    margin: 1em 0 !important;
+}
+
+/* 标题字体大小 */
+h1 {
+    font-size: 2.2em !important;
+    line-height: 1.3 !important;
+}
+
+h2 {
+    font-size: 1.8em !important;
+    line-height: 1.4 !important;
+}
+
+h3 {
+    font-size: 1.5em !important;
+    line-height: 1.5 !important;
+}
+
+h4 {
+    font-size: 1.3em !important;
+    line-height: 1.5 !important;
+}
+
+h5 {
+    font-size: 1.15em !important;
+    line-height: 1.5 !important;
+}
+
+h6 {
+    font-size: 1.05em !important;
+    line-height: 1.5 !important;
+}
+
+/* 列表文字 */
+li {
+    font-size: 16px !important;
+    line-height: 1.8 !important;
+    margin: 0.5em 0 !important;
+}
+
+ul, ol {
+    font-size: 16px !important;
+}
+
+/* 代码块字体 */
+pre {
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+}
+
+code {
+    font-size: 15px !important;
+}
+
+/* 内联代码 */
+:not(pre) > code {
+    font-size: 15px !important;
+    padding: 2px 6px !important;
+}
+
+/* 代码编辑器 */
+.editable-code,
+textarea.code-editor-textarea {
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+}
+
+/* 表格 */
+table {
+    font-size: 15px !important;
+}
+
+th, td {
+    font-size: 15px !important;
+    padding: 10px !important;
+}
+
+/* 引用块 */
+blockquote {
+    font-size: 16px !important;
+    line-height: 1.8 !important;
+}
+
+/* 按钮文字 */
+button {
+    font-size: 15px !important;
+}
+
+/* 侧边栏 */
+.sidebar {
+    font-size: 15px !important;
+}
+
+.sidebar a {
+    font-size: 15px !important;
+}
+
+/* 练习题相关 */
+.exercise-card {
+    font-size: 16px !important;
+}
+
+.exercise-card strong {
+    font-size: 16px !important;
+}
+
+.exercise-answer {
+    font-size: 16px !important;
+}
+
+.exercise-answer code {
+    font-size: 15px !important;
+}
+
+/* 代码运行结果 */
+.code-result,
+.result-output,
+.result-error-output {
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    body {
+        font-size: 15px !important;
+    }
+    
+    p, li {
+        font-size: 15px !important;
+    }
+    
+    h1 {
+        font-size: 2em !important;
+    }
+    
+    h2 {
+        font-size: 1.6em !important;
+    }
+    
+    h3 {
+        font-size: 1.4em !important;
+    }
+}
+
