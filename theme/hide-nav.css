@@ -1,0 +1,5 @@
+/**
+ * 隐藏导航按钮
+ */
+.nav-wrapper, .nav-wide-wrapper, .mobile-nav-chapters, .nav-chapters,
+nav.nav-wrapper, nav.nav-wide-wrapper { display: none !important; }

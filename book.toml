@@ -1,0 +1,36 @@
+[book]
+title = "Binary Engineer Learning"
+description = "AI驱动的二进制工程师和系统编程完整学习路径"
+authors = ["Emqo"]
+language = "zh-CN"
+
+[build]
+build-dir = "book"
+
+[output.html]
+default-theme = "navy"
+git-repository-url = "https://github.com/Emqo/BinaryEngineerLearning"
+edit-url-template = "https://github.com/Emqo/BinaryEngineerLearning/edit/master/{path}"
+no-section-label = true
+print = { enable = true }
+
+# 自定义 JavaScript 和 CSS
+additional-css = ["theme/fonts.css", "theme/font-size.css", "theme/code-runner.css", "theme/exercises.css", "theme/hide-nav.css"]
+# 注意：disable-livereload.js 必须在最前面，确保在 livereload 脚本之前加载
+additional-js = ["theme/disable-livereload.js", "theme/codemirror-loader.js", "theme/code-runner.js"]
+
+[output.html.search]
+enable = true
+limit-results = 30
+teaser-word-count = 30
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 1
+boost-paragraph = 1
+expand = true
+heading-split-level = 3
+
+[preprocessor.links]
+
+[preprocessor.index]
+

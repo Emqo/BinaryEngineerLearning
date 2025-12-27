@@ -1,0 +1,10 @@
+/**
+ * 程序员字体配置
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap');
+
+pre, code, kbd, samp, .editable-code, textarea.code-editor-textarea {
+    font-family: 'Fira Code', Consolas, Monaco, 'Courier New', monospace !important;
+    font-feature-settings: "liga" 1, "calt" 1;
+}

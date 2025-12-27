@@ -1,0 +1,55 @@
+/**
+ * 练习题样式 - 与章节内容保持一致
+ * 只做细微的颜色优化
+ */
+
+/* ==================== 题目卡片（简化，与页面风格统一）==================== */
+.exercise-card {
+    margin: 24px 0;
+    padding: 0;
+}
+
+.exercise-card h2,
+.exercise-card h3 {
+    margin-top: 0;
+}
+
+/* ==================== 参考答案 ==================== */
+.exercise-answer {
+    margin-top: 20px;
+    padding: 16px 0;
+    border-top: 1px dashed var(--table-border-color, #ddd);
+    display: none; /* 默认隐藏 */
+}
+
+.exercise-answer[style*="display: block"] {
+    display: block !important;
+}
+
+.exercise-answer h3,
+.exercise-answer h4.answer-title {
+    color: var(--links, #4183c4);
+    font-size: 18px;
+    margin: 0 0 12px 0;
+    font-weight: 600;
+}
+
+/* ==================== 练习说明（简化）==================== */
+.exercise-intro {
+    margin: 16px 0;
+    padding-left: 16px;
+    border-left: 3px solid var(--links, #4183c4);
+}
+
+.exercise-intro p {
+    margin: 0;
+}
+
+/* ==================== 提交要求 ==================== */
+.submit-requirements {
+    margin: 16px 0;
+}
+
+.submit-requirements h4 {
+    margin: 0 0 8px 0;
+}

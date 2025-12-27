@@ -1,0 +1,77 @@
+# 操作系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE和编辑器
+.vscode/
+.idea/
+.cursor/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# mdbook 构建输出
+book/
+*.pdb
+
+# 编译输出
+*.o
+*.obj
+*.exe
+*.out
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+
+# 调试文件
+*.dSYM/
+*.su
+*.idb
+*.ilk
+
+# 临时文件
+*.tmp
+*.temp
+*.log
+*.cache
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# 测试覆盖率
+.coverage
+htmlcov/
+.pytest_cache/
+
+# 环境变量
+.env
+.env.local
+
+# 备份文件
+*.bak
+*.backup
+*~
+
+# 二进制文件（如果需要保留某些二进制示例，可以注释掉）
+# *.bin
+# *.dat
+
+# 个人笔记（可选，如果不想上传个人笔记）
+# notes/
+# personal/
