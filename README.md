@@ -1,6 +1,7 @@
 # BinaryEngineerLearning
 
-> 二进制工程师和系统编程完整学习路径
+> 二进制工程师和系统编程完整学习路径。通过交互式教程学习C语言、Python、汇编、逆向工程和安全技术。  
+> Complete learning path for binary engineers and systems programming. Learn C language, Python, assembly, reverse engineering, and security technologies through interactive tutorials.
 
 欢迎！这是一个交互式学习平台，你可以边看边练习，直接在浏览器中运行代码。通过系统化的教程，逐步掌握C语言、Python、汇编、逆向工程和安全技术。
 
@@ -224,3 +225,219 @@ git push origin gh-pages
 ---
 
 **开始你的学习之旅吧！** 🎉
+
+---
+
+# BinaryEngineerLearning
+
+> Complete learning path for binary engineers and systems programming. Learn C language, Python, assembly, reverse engineering, and security technologies through interactive tutorials.
+
+Welcome! This is an interactive learning platform where you can read and practice, running code directly in your browser. Through systematic tutorials, you'll gradually master C language, Python, assembly, reverse engineering, and security technologies.
+
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/Emqo/BinaryEngineerLearning)](https://github.com/Emqo/BinaryEngineerLearning/stargazers)
+
+## 📁 Directory Structure
+
+```
+BinaryEngineerLearning/
+├── src/                           # mdbook source files
+│   ├── c-language/                # C language learning
+│   │   ├── chapter01-c-basics/    # Chapter 1: C Language Basics
+│   │   │   ├── content.md         # Learning content
+│   │   │   └── exercises.md       # Exercises
+│   │   └── ...
+│   ├── SUMMARY.md                 # Book table of contents
+│   └── introduction.md            # Homepage
+│
+├── book.toml                      # mdbook configuration file
+├── README.md                      # Project description (this file)
+├── LICENSE                        # License
+└── .github/workflows/            # GitHub Actions deployment config
+```
+
+---
+
+## 🚀 Quick Start
+
+### 🌐 Online Learning (Recommended)
+
+Visit our online version: **https://emqo.github.io/BinaryEngineerLearning/**
+
+- 📖 Interactive reading experience
+- 💻 Online code editor
+- ✅ Instant execution and feedback
+- 🔍 Full-text search functionality
+
+### 📚 Local Learning
+
+#### Method 1: Using mdbook (Recommended)
+```bash
+# Install mdbook
+cargo install mdbook
+
+# Start local server
+mdbook serve
+
+# Open browser at http://localhost:3000
+```
+
+#### Method 2: Read Markdown directly
+Navigate to the corresponding language directory, for example:
+```bash
+cd src/c-language/chapter01-c-basics
+# Read content.md for learning content
+# Complete exercises.md exercises
+```
+
+---
+
+## 🛠️ Setup and Deployment
+
+### 📦 Installing mdbook
+
+#### Windows
+
+**Method 1: Using Cargo (Recommended)**
+```powershell
+# 1. Install Rust (if not already installed)
+# Visit https://rustup.rs/ to download and install
+
+# 2. Install mdbook
+cargo install mdbook
+
+# 3. Verify installation
+mdbook --version
+```
+
+**Method 2: Using precompiled binaries**
+```powershell
+# 1. Download from GitHub
+# https://github.com/rust-lang/mdBook/releases
+# Download mdbook-x.x.x-x86_64-pc-windows-msvc.zip
+
+# 2. Extract to any directory
+
+# 3. Add to PATH environment variable
+```
+
+#### Linux/macOS
+
+```bash
+# Install using Cargo
+cargo install mdbook
+
+# Or use package manager (if available)
+# Ubuntu/Debian: sudo apt install mdbook
+# macOS: brew install mdbook
+```
+
+### 🚀 Running Locally
+
+```bash
+# 1. Clone repository (if not already)
+git clone https://github.com/Emqo/BinaryEngineerLearning.git
+cd BinaryEngineerLearning
+
+# 2. Start local server
+mdbook serve
+
+# 3. Open browser at http://localhost:3000
+```
+
+### 📚 Building Static Website
+
+```bash
+# Build to book/ directory
+mdbook build
+
+# Built files are in book/ directory
+```
+
+### 🌐 GitHub Pages Deployment
+
+**Method 1: Using GitHub Actions (Recommended, already configured)**
+
+1. Ensure `.github/workflows/deploy.yml` file exists (already included in project)
+2. Enable GitHub Pages in repository settings:
+   - Go to repository Settings → Pages
+   - Source: Select **GitHub Actions**
+3. Push code to master branch, GitHub Actions will automatically build and deploy
+4. Visit: `https://emqo.github.io/BinaryEngineerLearning/`
+
+**Method 2: Manual Deployment**
+
+```bash
+# 1. Build
+mdbook build
+
+# 2. Switch to gh-pages branch
+git checkout -b gh-pages
+git rm -rf .
+
+# 3. Copy built files
+cp -r book/* .
+
+# 4. Commit
+git add .
+git commit -m "Deploy book"
+git push origin gh-pages
+```
+
+### 💻 Online Code Execution Feature
+
+Code blocks automatically support interactive editing and execution. Code blocks marked with `c`, `cpp`, `python`, or `asm` will be converted into CodeMirror editors with run buttons.
+
+**Supported online compilers** (for reference):
+1. **PlayCode.io** - https://playcode.io/c/
+2. **Compiler Explorer** - https://godbolt.org/
+3. **Replit** - https://replit.com/
+4. **OnlineGDB** - https://www.onlinegdb.com/
+
+---
+
+## 💡 Learning Tips
+
+1. **AI Interactive Learning**: Ask AI questions anytime for detailed explanations
+2. **Step by Step**: Learn section by section, complete current section before continuing
+3. **Practice More**: Combine theory with practice, write code for each concept learned
+4. **Complete Exercises**: Each chapter has exercises, make sure to complete them
+5. **Take Notes**: Record learning insights and encountered problems
+6. **Keep Learning**: Technology evolves quickly, maintain learning enthusiasm
+7. **Project-Driven**: Consolidate knowledge through practical projects
+8. **Code Review**: Let AI review your code and get improvement suggestions
+
+---
+
+## 📝 Contributing
+
+We welcome issue reports and improvement suggestions!
+
+- 🐛 Found a bug? [Submit an Issue](https://github.com/Emqo/BinaryEngineerLearning/issues)
+- 💡 Have a suggestion? [Submit a Pull Request](https://github.com/Emqo/BinaryEngineerLearning/pulls)
+- ⭐ Found it useful? Give us a Star!
+
+---
+
+## 📄 License
+
+This repository content is for learning purposes only. See [LICENSE](LICENSE) file for details.
+
+---
+
+## 🤖 AI is Your Encyclopedia
+
+In this learning program:
+- 📚 **AI-Generated Learning Materials**: Every concept has detailed explanations, like an e-book
+- 💻 **Code Examples**: Every topic has complete runnable code
+- 📝 **Exercises**: Each chapter has matching exercises to consolidate knowledge
+- ✅ **Assignment Review**: AI will review your code and understanding
+- 🔄 **Always Available**: Ask questions anytime for instant answers
+
+Remember: **Programming is a highly practical skill, write more code, ask AI more, practice more!**
+
+**AI is the digital encyclopedia of the future, let's start learning!** 🚀
+
+---
+
+**Start your learning journey!** 🎉
