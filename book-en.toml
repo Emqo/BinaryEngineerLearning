@@ -1,12 +1,12 @@
 [book]
 title = "Binary Engineer Learning"
-description = "AI驱动的二进制工程师和系统编程完整学习路径"
+description = "Complete learning path for binary engineers and systems programming, powered by AI"
 authors = ["Emqo"]
-language = "zh-CN"
-src = "src/zh"
+language = "en"
+src = "src/en"
 
 [build]
-build-dir = "book"
+build-dir = "book-en"
 
 [output.html]
 default-theme = "navy"
@@ -35,3 +35,4 @@ heading-split-level = 3
 [preprocessor.links]
 
 [preprocessor.index]
+

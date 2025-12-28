@@ -40,9 +40,9 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-      - name: Build with mdBook
+      - name: Build Chinese version with mdBook
         run: mdbook build
-      - name: Copy theme/lib directory
+      - name: Copy theme/lib directory to build output
         run: |
           if [ -d "theme/lib" ]; then
             mkdir -p book/theme/lib
