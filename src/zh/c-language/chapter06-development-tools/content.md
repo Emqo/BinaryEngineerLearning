@@ -1,5 +1,7 @@
 # 第6章：开发工具和最佳实践
 
+**学习提示**：本章作为总结性章节，会使用一些后续章节才会学到的概念（如函数定义、控制结构if/while/for等）。如果遇到不理解的代码，可以先跳过，等学完相关章节后再回来复习。本章的重点是了解调试技巧和代码风格的基本思路。
+
 ## 6.1 调试技巧
 
 调试是编程中非常重要的技能。在深入学习调试器（如gdb）之前，掌握基础的调试技巧可以大大提高开发效率。
@@ -8,9 +10,12 @@
 
 最简单有效的调试方法就是使用 `printf` 输出中间结果：
 
+**注意**：以下示例中使用了函数定义，函数会在后续章节详细学习。这里先了解调试的基本思路。
+
 ```c
 #include <stdio.h>
 
+// 注意：函数定义会在后续章节学习
 int calculate_sum(int a, int b) {
     // 调试输出：检查函数参数
     printf("[DEBUG] calculate_sum 被调用，参数 a=%d, b=%d\n", a, b);
@@ -102,13 +107,16 @@ gcc -Wall -Werror program.c -o program
 
 将复杂问题分解为小函数，逐个测试：
 
+**注意**：以下示例使用了函数定义和if语句，这些内容会在后续章节学习。这里先了解分段测试的思路。
+
 ```c
 #include <stdio.h>
 #include <assert.h>  // assert宏用于断言
 
+// 注意：函数定义和if语句会在后续章节学习
 // 测试函数1：检查参数是否有效
 int check_valid(int x) {
-    if (x < 0 || x > 100) {
+    if (x < 0 || x > 100) {  // if语句会在后续章节学习
         printf("[ERROR] 参数无效: %d\n", x);
         return 0;
     }
@@ -138,10 +146,13 @@ int main() {
 
 `assert` 宏用于在运行时检查条件，如果条件为假则终止程序：
 
+**注意**：以下示例使用了函数定义，函数会在后续章节详细学习。
+
 ```c
 #include <stdio.h>
 #include <assert.h>
 
+// 注意：函数定义会在后续章节学习
 int divide(int a, int b) {
     assert(b != 0);  // 断言：除数不能为0
     return a / b;
@@ -201,13 +212,16 @@ int max(int a, int b);  // 不够具体
 
 **缩进和空格**：
 
+**注意**：以下示例使用了if/else语句，这些控制结构会在后续章节详细学习。这里先了解代码格式的重要性。
+
 ```c
 // ✅ 好的格式：统一的缩进（通常使用4个空格）
+// 注意：if/else语句会在后续章节学习
 int main() {
     int x = 10;
     int y = 20;
     
-    if (x > y) {
+    if (x > y) {  // if语句会在后续章节学习
         printf("x is greater\n");
     } else {
         printf("y is greater\n");
@@ -245,6 +259,8 @@ if (condition)
 
 ### 注释规范
 
+**注意**：以下示例使用了函数定义和while循环，这些内容会在后续章节详细学习。这里先了解注释的写法。
+
 ```c
 #include <stdio.h>
 
@@ -254,10 +270,12 @@ if (condition)
  * @param a 第一个整数
  * @param b 第二个整数
  * @return 最大公约数
+ * 
+ * 注意：函数定义和while循环会在后续章节学习
  */
 int gcd(int a, int b) {
     // 使用欧几里得算法
-    while (b != 0) {
+    while (b != 0) {  // while循环会在后续章节学习
         int temp = b;
         b = a % b;
         a = temp;
@@ -282,6 +300,8 @@ int main() {
 
 ### 常量使用
 
+**注意**：以下示例使用了函数定义和if/else语句，这些内容会在后续章节详细学习。
+
 ```c
 #include <stdio.h>
 
@@ -289,6 +309,7 @@ int main() {
 #define MAX_STUDENTS 100
 #define PASSING_SCORE 60.0f
 
+// 注意：函数定义和if/else语句会在后续章节学习
 void check_score(float score) {
     if (score >= PASSING_SCORE) {
         printf("及格\n");
@@ -307,14 +328,18 @@ void check_score_bad(float score) {
 
 ### 错误处理
 
+**注意**：以下示例使用了函数定义、if语句和`fprintf`，这些内容会在后续章节详细学习。这里先了解错误处理的基本思路。
+
 ```c
 #include <stdio.h>
 #include <stdlib.h>
 
+// 注意：函数定义和if语句会在后续章节学习
 // ✅ 好的做法：检查错误并处理
 int safe_divide(int a, int b) {
-    if (b == 0) {
-        fprintf(stderr, "错误：除数不能为0\n");
+    if (b == 0) {  // if语句会在后续章节学习
+        // fprintf会在后续章节学习，这里先用printf代替
+        printf("错误：除数不能为0\n");
         return -1;  // 返回错误码
     }
     return a / b;
@@ -322,7 +347,7 @@ int safe_divide(int a, int b) {
 
 int main() {
     int result = safe_divide(10, 2);
-    if (result == -1) {
+    if (result == -1) {  // if语句会在后续章节学习
         return 1;  // 程序异常退出
     }
     printf("结果: %d\n", result);
@@ -333,10 +358,13 @@ int main() {
 
 ### 代码组织
 
+**注意**：以下示例使用了函数定义和函数调用，这些内容会在后续章节详细学习。这里先了解代码组织的基本思路。
+
 ```c
 // ✅ 好的代码组织：清晰的函数划分
 #include <stdio.h>
 
+// 注意：函数声明和定义会在后续章节学习
 // 函数声明
 int get_input(void);
 int calculate(int x, int y);
@@ -429,9 +457,10 @@ int main() {
     printf("uninitialized = %d\n", uninitialized);
     
     // 比较有符号和无符号整数
+    // 注意：if语句会在后续章节学习，这里先了解编译警告的概念
     int signed_val = -1;
     unsigned int unsigned_val = 100;
-    if (signed_val > unsigned_val) {
+    if (signed_val > unsigned_val) {  // if语句会在后续章节学习
         printf("signed_val > unsigned_val\n");
     }
     
@@ -491,10 +520,13 @@ int main() {
 3. 测试正常情况和异常情况
 4. 使用 `-DNDEBUG` 编译选项禁用断言（可选）
 
+**注意**：本题需要使用函数定义，函数会在后续章节详细学习。如果还没学到函数，可以先跳过此题，等学完函数后再回来练习。
+
 ```c
 #include <stdio.h>
 #include <assert.h>
 
+// 注意：函数定义会在后续章节学习
 // 除法函数，使用assert检查除数
 int divide(int a, int b) {
     // 在这里使用assert检查除数是否为0
@@ -561,15 +593,18 @@ int main() {
 2. 跟踪变量的值在不同阶段的变化
 3. 使用格式化的输出使调试信息清晰易读
 
+**注意**：本题需要使用函数定义和for循环，这些内容会在后续章节详细学习。如果还没学到，可以先跳过此题，等学完相关章节后再回来练习。
+
 ```c
 #include <stdio.h>
 
+// 注意：函数定义和for循环会在后续章节学习
 int calculate_sum(int n) {
     int sum = 0;
     
     // 在这里添加printf调试信息
     
-    for (int i = 1; i <= n; i++) {
+    for (int i = 1; i <= n; i++) {  // for循环会在后续章节学习
         // 在这里添加printf调试信息，跟踪循环过程
         sum += i;
     }
@@ -714,6 +749,8 @@ int main() {
 3. 使用适当的错误消息
 4. 在错误情况下优雅地处理，而不是崩溃
 
+**注意**：本题需要使用if语句进行条件判断，if语句会在后续章节详细学习。如果还没学到，可以先跳过此题，等学完if语句后再回来练习。
+
 ```c
 #include <stdio.h>
 
@@ -722,6 +759,7 @@ int main() {
     
     printf("请输入年龄（0-150）: ");
     
+    // 注意：if语句会在后续章节学习
     // 在这里检查scanf的返回值
     
     // 在这里验证输入的范围

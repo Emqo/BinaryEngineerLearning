@@ -80,13 +80,10 @@ int main() {
     printf("x || y: %d (逻辑或，至少一个为真就为真)\n", x || y);
     printf("!x: %d (逻辑非，取反)\n", !x);
     
-    // 短路求值
+    // 短路求值（了解即可，控制结构会在后续章节学习）
     printf("\n=== 短路求值 ===\n");
-    int a = 0;
-    if (a != 0 && 10 / a > 5) {  // 如果a==0，不会执行10/a，避免除零错误
-        printf("这不会执行\n");
-    }
-    printf("短路求值避免了除零错误\n");
+    printf("短路求值：&& 如果左边为假，右边不执行；|| 如果左边为真，右边不执行\n");
+    printf("这样可以避免除零错误等潜在问题\n");
     
     return 0;
 }
@@ -196,13 +193,7 @@ int main() {
 #define FLAG_C (1 << 2)  // 第2位：00000100 (4)
 #define FLAG_D (1 << 3)  // 第3位：00001000 (8)
 
-void print_flags(unsigned char flags) {
-    printf("flags = 0b");
-    for (int i = 7; i >= 0; i--) {
-        printf("%d", (flags >> i) & 1);
-    }
-    printf(" (0x%02x, %u)\n", flags, flags);
-}
+// 注意：函数定义会在后续章节学习，这里先了解位运算的应用概念
 
 int main() {
     unsigned char flags = 0;  // 初始：所有标志都是关闭的
@@ -218,18 +209,12 @@ int main() {
     printf("  说明：|= 操作将指定位设置为1\n");
     printf("  原理：任何位与1进行或运算，结果都是1\n\n");
     
-    // 2. 检查标志位：if (flags & FLAG_BIT)
+    // 2. 检查标志位：flags & FLAG_BIT（如果结果不为0，说明该位是1）
     printf("2. 检查标志位:\n");
-    if (flags & FLAG_A) {
-        printf("  标志A是打开的\n");
-    }
-    if (flags & FLAG_C) {
-        printf("  标志C是打开的\n");
-    } else {
-        printf("  标志C是关闭的\n");
-    }
+    printf("  flags & FLAG_A 的结果: %u\n", flags & FLAG_A);
+    printf("  flags & FLAG_C 的结果: %u\n", flags & FLAG_C);
     printf("  说明：& 操作检查指定位是否为1\n");
-    printf("  原理：如果结果不为0，说明该位是1\n\n");
+    printf("  原理：如果结果不为0，说明该位是1（if语句会在后续章节学习）\n\n");
     
     // 3. 清除标志位：flags &= ~FLAG_BIT
     printf("3. 清除标志A:\n");
@@ -254,11 +239,10 @@ int main() {
     #define EXEC_PERM   (1 << 2)  // 执行权限
     
     unsigned char file_perm = READ_PERM | WRITE_PERM;  // 读写权限
-    printf("文件权限: ");
-    if (file_perm & READ_PERM) printf("r");
-    if (file_perm & WRITE_PERM) printf("w");
-    if (file_perm & EXEC_PERM) printf("x");
-    printf("\n");
+    printf("文件权限值: %u\n", file_perm);
+    printf("  READ_PERM检查: %u\n", file_perm & READ_PERM);
+    printf("  WRITE_PERM检查: %u\n", file_perm & WRITE_PERM);
+    printf("  EXEC_PERM检查: %u\n", file_perm & EXEC_PERM);
     
     return 0;
 }

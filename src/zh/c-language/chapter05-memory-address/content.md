@@ -176,14 +176,7 @@ int main() {
 ```c
 #include <stdio.h>
 
-int is_little_endian() {
-    unsigned int x = 0x12345678;
-    unsigned char *p = (unsigned char *)&x;
-    
-    // 如果第一个字节是0x78（低位字节），则是小端序
-    // 如果第一个字节是0x12（高位字节），则是大端序
-    return (p[0] == 0x78);
-}
+// 注意：函数定义和指针会在后续章节学习，这里先了解字节序的概念
 
 void demonstrate_endianness() {
     unsigned int num = 0x12345678;
